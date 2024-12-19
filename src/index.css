@@ -1,0 +1,12 @@
+/* 전체 화면에 스크롤이 생기지 않도록 설정 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* 스크롤 방지 */
+}
+
+#root {
+  height: 100%;
+}
