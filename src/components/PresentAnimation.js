@@ -20,7 +20,7 @@ function PresentAnimation() {
 // 12.21 Conflict 수정 > 문구 일부 변경 
     <div className="animation-container">
       <h1 className="animation-text">
-        {"Present for H&R Family...♥".split("").map((char, index) => (
+        {"Present for H&R Family♥".split("").map((char, index) => (
           <span key={index} className={char === " " ? "space" : ""}>
             {char}
           </span>
