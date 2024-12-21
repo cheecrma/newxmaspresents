@@ -8,7 +8,7 @@
   ); /* 깊고 어두운 검은색 조합 */
   background-size: 200% 200%;
   color: white;
-  font-family: "Dancing Script", cursive;
+  /* font-family: "Dancing Script", cursive;  */
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -66,8 +66,11 @@
   animation: textGlow 3s infinite alternate ease-in-out; /* 텍스트에 부드러운 글로우 효과 */
 }
 
+
+/* 12.21 18:38 Conflict 수정 > text span color 추가 */
 /* 각 글자 애니메이션 */
 .animation-text span {
+  color: #47b8be; 
   opacity: 0;
   transform: translateY(20px);
   animation: letterFade 0.5s ease-in-out forwards;
