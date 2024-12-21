@@ -2,7 +2,7 @@
 .animation-container {
   background-color: black;
   color: white;
-  font-family: "Dancing Script", cursive;
+  /* font-family: "Dancing Script", cursive;  */
   height: 100vh;
   width: 100vw; /* 전체 너비 설정 */
   display: flex;
