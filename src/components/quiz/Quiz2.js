@@ -21,6 +21,12 @@ export default function Quiz2({ onCorrect, onClose }) {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   return (
     <div
       style={{
@@ -40,6 +46,7 @@ export default function Quiz2({ onCorrect, onClose }) {
       <input
         type="text"
         value={answer}
+        onKeyDown={handleKeyPress}
         onChange={(e) => setAnswer(e.target.value)}
         placeholder="정답을 입력하세요"
         style={{
