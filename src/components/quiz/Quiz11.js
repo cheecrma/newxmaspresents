@@ -3,35 +3,35 @@ import "./Quiz.css";
 
 function Quiz11({ onCorrect, onClose }) {
   const handleCorrectAnswer = () => {
-    alert("정답입니다!");
-    onCorrect();
+    onCorrect(); // 정답 처리 후 바로 화면 닫기
   };
 
   const handleWrongAnswer = () => {
-    alert("틀렸습니다. 다시 시도해보세요!");
+    alert("틀렸습니다. 다시 시도해보세요!"); // 오답일 때만 팝업 표시
   };
 
   return (
     <div className="quiz-container">
       <div className="quiz-content">
-        <h2 className="quiz-title">퀴즈 1</h2>
+        <h2 className="quiz-title">한화리조트 제주</h2>
         <p className="quiz-question">
-          다음 중 React에서 상태를 관리하는 Hook은 무엇일까요?
+          한화리조트 제주와 가까운 자연 명소는 무엇일까요?
         </p>
         <div className="quiz-options">
           <button onClick={handleWrongAnswer} className="quiz-button">
-            useEffect
+            경포대
           </button>
           <button onClick={handleCorrectAnswer} className="quiz-button">
-            useState
+            한라산
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            useRef
+            설악산
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            useContext
+            남산
           </button>
         </div>
+
         <button onClick={onClose} className="close-button">
           닫기
         </button>

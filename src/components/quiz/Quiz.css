@@ -5,53 +5,48 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(5px); /* 배경 블러 처리로 고급스러운 느낌 추가 */
 }
 
 /* 퀴즈 컨테이너 */
 .quiz-container {
   background-color: #ffffff;
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  max-width: 400px;
+  max-width: 420px;
   width: 90%;
   position: relative;
+  animation: fadeIn 0.3s ease-in-out; /* 부드러운 등장 효과 */
 }
 
 /* 퀴즈 타이틀 */
 .quiz-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #5a3e36;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 /* 퀴즈 질문 */
 .quiz-question {
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: #4a4a4a;
 }
 
 /* 옵션 버튼 스타일 */
 .quiz-options {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-/* 버튼과 스탬프 컨테이너 */
-.quiz-option-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 12px;
 }
 
 .quiz-button {
@@ -60,43 +55,59 @@
   background-color: #5a3e36;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
   width: 100%;
 }
 
 .quiz-button:hover {
   background-color: #7d5a50;
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 버튼에 살짝 음영 추가 */
 }
 
 .quiz-button:disabled {
-  background-color: #ccc;
+  background-color: #d3d3d3;
+  color: #777;
   cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 닫기 버튼 스타일 */
+.close-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #e5e5e5;
+  color: #4a4a4a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.close-button:hover {
+  background-color: #cccccc;
+  transform: scale(1.02);
 }
 
 /* 스탬프 스타일 */
 .stamp {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   pointer-events: none; /* 스탬프가 버튼 클릭을 방해하지 않도록 설정 */
   z-index: 10; /* 버튼 위에 스탬프가 나타나도록 설정 */
 }
 
-/* 닫기 버튼 스타일 */
-.close-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ccc;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.close-button:hover {
-  background-color: #bbb;
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
