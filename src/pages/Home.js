@@ -1,5 +1,7 @@
 import React from "react";
 import Wardrobe from "../components/Wardrobe";
+// import { fontFamily } from "html2canvas/dist/types/css/property-descriptors/font-family";
+
 
 function Home() {
   return (
@@ -24,17 +26,20 @@ const styles = {
     fontSize: "2.5rem",
     color: "#5a3e36",
     marginBottom: "20px",
-    fontFamily: "'Dancing Script', cursive",
+    fontFamily: "Cafe24Supermagic-Bold-v1.0",
   },
   subtitle: {
     fontSize: "1.2rem",
     color: "#7d5a50",
     marginBottom: "40px",
+    fontFamily: "LeeSeoyun",
   },
   wardrobeContainer: {
     display: "flex",
     justifyContent: "center",
   },
 };
+
+
 
 export default Home;
