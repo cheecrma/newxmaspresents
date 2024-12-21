@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Wardrobe.css";
 
 function Wardrobe() {
   const navigate = useNavigate();
@@ -9,8 +10,8 @@ function Wardrobe() {
   };
 
   return (
-    <div style={{ cursor: "pointer" }} onClick={handleClick}>
-      <img src="/images/wardrobe.png" alt="Wardrobe" width="200" />
+    <div  style={{ cursor: "pointer" }} onClick={handleClick} >
+      <img className="wardrobe_img" src="/images/wardrobe.png" alt="Wardrobe" width="200" />
     </div>
   );
 }

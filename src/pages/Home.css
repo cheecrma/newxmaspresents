@@ -1,0 +1,7 @@
+
+.title_highlight { 
+
+  background: linear-gradient(to top, #ccb3ff 30%, transparent 10%);
+  animation: slideUp 5s infinite;
+  -webkit-animation: slideUp 5s infinite;
+}
