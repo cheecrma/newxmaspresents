@@ -15,20 +15,20 @@ function Quiz10({ onCorrect, onClose }) {
       <div className="quiz-content">
         <h2 className="quiz-title">한화리조트 경주</h2>
         <p className="quiz-question">
-          한화리조트 경주에서 가장 가까운 대표적인 유적지는 어디일까요?
+          한화리조트 경주에서 꼭 먹어봐야 할 경주의 대표 음식은 무엇일까요?
         </p>
         <div className="quiz-options">
           <button onClick={handleCorrectAnswer} className="quiz-button">
-            불국사
+            경주 황남빵
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            경복궁
+            평양냉면
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            첨성대
+            제주 흑돼지
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            독립문
+            춘천 닭갈비
           </button>
         </div>
         <button onClick={onClose} className="close-button">
