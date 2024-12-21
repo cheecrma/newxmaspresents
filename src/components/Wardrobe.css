@@ -1,3 +1,4 @@
+/* 옷장 이미지 hover시 확대 */
 .wardrobe_img:hover {
   transform: scale(1.15);
 }
