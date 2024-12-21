@@ -19,7 +19,7 @@ function PresentAnimation() {
 
   return (
     <div className={`animation-container ${isAnimationDone ? "fade-out" : ""}`}>
-      <h1 className="animation-text">Present for you</h1>
+      <h1 className="animation-text">Present for <br></br><span >H&R Family...♥</span></h1>
     </div>
   );
 }
