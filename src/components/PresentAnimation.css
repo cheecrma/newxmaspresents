@@ -1,61 +1,192 @@
 /* 전체 화면을 덮는 컨테이너 */
 .animation-container {
-  background-color: black;
+  background: radial-gradient(
+    circle at center,
+    #000000,
+    #0a0a0a,
+    #000000
+  ); /* 깊고 어두운 검은색 조합 */
+  background-size: 200% 200%;
   color: white;
   font-family: "Dancing Script", cursive;
   height: 100vh;
-  width: 100vw; /* 전체 너비 설정 */
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  position: fixed; /* 전체 화면 고정 */
+  position: fixed;
   top: 0;
   left: 0;
-  animation: fadeIn 2s ease-out;
+  z-index: 1;
 }
 
-/* 타이핑 애니메이션 */
+/* 빛나는 애니메이션 효과 */
+.animation-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(100px);
+  transform: translate(-50%, -50%);
+  animation: ambientGlow 8s infinite alternate ease-in-out; /* 부드러운 빛의 움직임 */
+  z-index: 2;
+}
+
+/* 별빛 반짝임 효과 */
+.animation-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.3; /* 별빛 투명도 */
+  animation: starTwinkle 4s infinite ease-in-out; /* 별빛 깜빡임 */
+  z-index: -1;
+}
+
+/* 텍스트 컨테이너 */
 .animation-text {
-  font-size: 4rem; /* 텍스트 크기 증가 */
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 5s steps(20, end) forwards; /* 커서 깜빡임 애니메이션 제거 */
+  display: flex;
+  gap: 0.1rem; /* 글자 간격 */
+  font-size: 3rem; /* 글씨 크기 */
   text-align: center;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.8); /* 글씨에 은은한 투명도 */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* 글씨에 글로우 효과 */
+  animation: textGlow 3s infinite alternate ease-in-out; /* 텍스트에 부드러운 글로우 효과 */
 }
 
-/* 페이드 아웃 애니메이션 */
-.fade-out {
-  animation: fadeOut 1s ease-out forwards;
+/* 각 글자 애니메이션 */
+.animation-text span {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: letterFade 0.5s ease-in-out forwards;
 }
 
-/* 타이핑 애니메이션 키프레임 */
-@keyframes typing {
-  from {
-    width: 0;
+.animation-text span.space {
+  width: 0.5rem; /* 공백의 너비를 설정 */
+  animation: none; /* 공백에 애니메이션 적용 안 함 */
+}
+
+/* 각 글자의 애니메이션 딜레이 */
+.animation-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+.animation-text span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animation-text span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.animation-text span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.animation-text span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.animation-text span:nth-child(6) {
+  animation-delay: 1s;
+}
+.animation-text span:nth-child(7) {
+  animation-delay: 1.2s;
+}
+.animation-text span:nth-child(8) {
+  animation-delay: 1.4s;
+}
+.animation-text span:nth-child(9) {
+  animation-delay: 1.6s;
+}
+.animation-text span:nth-child(10) {
+  animation-delay: 1.8s;
+}
+.animation-text span:nth-child(11) {
+  animation-delay: 2s;
+}
+.animation-text span:nth-child(12) {
+  animation-delay: 2.2s;
+}
+.animation-text span:nth-child(13) {
+  animation-delay: 2.4s;
+}
+
+.animation-text span:nth-child(14) {
+  animation-delay: 2.6s;
+}
+
+.animation-text span:nth-child(15) {
+  animation-delay: 2.8s;
+}
+
+/* 부드러운 빛의 움직임 */
+@keyframes ambientGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
   }
-  to {
-    width: 100%;
+  50% {
+    transform: translate(-45%, -55%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
-/* 페이드 인 효과 */
-@keyframes fadeIn {
+/* 별빛 깜빡임 애니메이션 */
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* 글자별 애니메이션 */
+@keyframes letterFade {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* 페이드 아웃 효과 */
-@keyframes fadeOut {
-  from {
-    opacity: 1;
+/* 텍스트 글로우 애니메이션 */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.2);
   }
-  to {
-    opacity: 0;
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .animation-text {
+    font-size: 2rem; /* 휴대폰에서 글씨 크기 줄임 */
+  }
+}
+
+@media (max-width: 480px) {
+  .animation-text {
+    font-size: 1.5rem; /* 작은 화면에서 글씨 크기 더 줄임 */
+    gap: 0.05rem; /* 글자 간격 조정 */
   }
 }
