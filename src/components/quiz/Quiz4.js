@@ -1,42 +1,108 @@
-import React from "react";
-import "./Quiz.css";
+// src/components/quiz/Quiz4.js
 
-function Quiz4({ onCorrect, onClose }) {
-  const handleCorrectAnswer = () => {
-    onCorrect(); // 정답 처리 후 바로 화면 닫기
-  };
+"use client";
 
-  const handleWrongAnswer = () => {
-    alert("틀렸습니다. 다시 시도해보세요!"); // 오답일 때만 팝업 표시
+import { useState } from "react";
+
+export default function Quiz4({ onCorrect, onClose }) {
+  const [answer, setAnswer] = useState("");
+  const [feedback, setFeedback] = useState(null);
+
+  // 정답 설정
+  const correctAnswer = "조개구이";
+
+  const handleSubmit = () => {
+    if (answer.trim() === correctAnswer) {
+      setFeedback(true);
+      setTimeout(() => {
+        onCorrect();
+      }, 100); // 0.1초 후에 다음 단계로 진행
+    } else {
+      setFeedback(false);
+    }
   };
 
   return (
-    <div className="quiz-container">
-      <div className="quiz-content">
-        <h2 className="quiz-title">대천 파로스</h2>
-        <p className="quiz-question">
-          대천 파로스에서 가장 가까운 관광 명소는 어디일까요?
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50%",
+        padding: "20px",
+        textAlign: "center",
+        backgroundColor: "#f5f0e1",
+      }}
+    >
+      <p style={{ fontSize: "18px", marginBottom: "10px" }}>
+        "대천 파로스 근처에서 꼭 먹어야 하는 ____."
+      </p>
+      <p
+        style={{
+          fontSize: "14px",
+          marginBottom: "20px",
+          color: "#888",
+          fontStyle: "italic",
+        }}
+      >
+        힌트: 불 위에 구워 먹는 신선한 조개 요리
+      </p>
+      <input
+        type="text"
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        placeholder="정답을 입력하세요"
+        style={{
+          padding: "10px",
+          fontSize: "16px",
+          marginBottom: "20px",
+          border: "2px solid #5a3e36",
+          borderRadius: "5px",
+          width: "80%",
+        }}
+      />
+      <button
+        onClick={handleSubmit}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "10px",
+        }}
+      >
+        제출
+      </button>
+      {feedback !== null && (
+        <p
+          style={{
+            fontSize: "16px",
+            marginTop: "10px",
+            color: feedback ? "green" : "red",
+          }}
+        >
+          {feedback ? "정답입니다!" : "틀렸습니다. 다시 시도해 보세요."}
         </p>
-        <div className="quiz-options">
-          <button onClick={handleCorrectAnswer} className="quiz-button">
-            대천 해수욕장
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            설악산
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            제주 오름
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            남이섬
-          </button>
-        </div>
-        <button onClick={onClose} className="close-button">
-          닫기
-        </button>
-      </div>
+      )}
+      <button
+        onClick={onClose}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "10px",
+        }}
+      >
+        닫기
+      </button>
     </div>
   );
 }
-
-export default Quiz4;

@@ -1,42 +1,97 @@
-import React from "react";
-import "./Quiz.css";
+// src/components/quiz/Quiz2.js
 
-function Quiz2({ onCorrect, onClose }) {
-  const handleCorrectAnswer = () => {
-    onCorrect(); // 정답 처리 후 바로 화면 닫기
-  };
+"use client";
 
-  const handleWrongAnswer = () => {
-    alert("틀렸습니다. 다시 시도해보세요!"); // 오답일 때만 팝업 표시
+import { useState } from "react";
+
+export default function Quiz2({ onCorrect, onClose }) {
+  const [answer, setAnswer] = useState("");
+  const [feedback, setFeedback] = useState(null);
+
+  const correctAnswer = "안시";
+
+  const handleSubmit = () => {
+    if (answer.trim() === correctAnswer) {
+      setFeedback(true);
+      setTimeout(() => {
+        onCorrect();
+      }, 100); // 0.1초 후에 다음 단계로 진행
+    } else {
+      setFeedback(false);
+    }
   };
 
   return (
-    <div className="quiz-container">
-      <div className="quiz-content">
-        <h2 className="quiz-title">산정호수 안시</h2>
-        <p className="quiz-question">
-          산정호수 안시에서 가장 인기 있는 활동은 무엇일까요?
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50%",
+        padding: "20px",
+        textAlign: "center",
+        backgroundColor: "#f5f0e1",
+      }}
+    >
+      <p style={{ fontSize: "18px", marginBottom: "20px" }}>
+        "산정호수 __"에서 빈칸에 들어갈 단어를 적으세요.
+      </p>
+      <input
+        type="text"
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        placeholder="정답을 입력하세요"
+        style={{
+          padding: "10px",
+          fontSize: "16px",
+          marginBottom: "20px",
+          border: "2px solid #5a3e36",
+          borderRadius: "5px",
+          width: "80%",
+        }}
+      />
+      <button
+        onClick={handleSubmit}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "10px",
+        }}
+      >
+        제출
+      </button>
+      {feedback !== null && (
+        <p
+          style={{
+            fontSize: "16px",
+            marginTop: "10px",
+            color: feedback ? "green" : "red",
+          }}
+        >
+          {feedback ? "정답입니다!" : "틀렸습니다. 다시 시도해 보세요."}
         </p>
-        <div className="quiz-options">
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            스쿠버다이빙
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            사막 탐험
-          </button>
-          <button onClick={handleCorrectAnswer} className="quiz-button">
-            호수 산책
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            스노클링
-          </button>
-        </div>
-        <button onClick={onClose} className="close-button">
-          닫기
-        </button>
-      </div>
+      )}
+      <button
+        onClick={onClose}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "10px",
+        }}
+      >
+        닫기
+      </button>
     </div>
   );
 }
-
-export default Quiz2;

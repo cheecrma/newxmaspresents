@@ -1,42 +1,128 @@
-import React from "react";
-import "./Quiz.css";
+// src/components/quiz/Quiz9.js
 
-function Quiz9({ onCorrect, onClose }) {
-  const handleCorrectAnswer = () => {
-    onCorrect(); // 정답 처리 후 바로 화면 닫기
+"use client";
+
+import { useState } from "react";
+
+export default function Quiz9({ onCorrect, onClose }) {
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [feedback, setFeedback] = useState(null);
+
+  // 정답 목록
+  const correctAnswers = ["리조트", "바다"];
+  const options = ["리조트", "피라미드", "바다"];
+
+  const handleOptionClick = (option) => {
+    // 선택한 옵션 추가/제거
+    setSelectedAnswers(
+      (prev) =>
+        prev.includes(option)
+          ? prev.filter((item) => item !== option) // 이미 선택된 경우 제거
+          : [...prev, option] // 선택되지 않은 경우 추가
+    );
   };
 
-  const handleWrongAnswer = () => {
-    alert("틀렸습니다. 다시 시도해보세요!"); // 오답일 때만 팝업 표시
+  const handleSubmit = () => {
+    // 선택한 정답과 실제 정답 비교
+    const isCorrect =
+      correctAnswers.length === selectedAnswers.length &&
+      correctAnswers.every((answer) => selectedAnswers.includes(answer));
+
+    setFeedback(isCorrect);
+    if (isCorrect) {
+      setTimeout(() => {
+        onCorrect();
+      }, 100); // 0.1초 후에 다음 단계로 진행
+    }
   };
 
   return (
-    <div className="quiz-container">
-      <div className="quiz-content">
-        <h2 className="quiz-title">한화리조트 거제</h2>
-        <p className="quiz-question">
-          한화리조트 거제에서 가장 유명한 관광 명소는 무엇일까요?
-        </p>
-        <div className="quiz-options">
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            설악산
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50%",
+        padding: "20px",
+        textAlign: "center",
+        backgroundColor: "#f5f0e1",
+      }}
+    >
+      <p style={{ fontSize: "18px", marginBottom: "20px" }}>
+        "한화리조트 거제"와 공통점이 있는 단어들을 모두 고르세요.
+      </p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          marginBottom: "20px",
+        }}
+      >
+        {options.map((option) => (
+          <button
+            key={option}
+            onClick={() => handleOptionClick(option)}
+            style={{
+              padding: "10px",
+              fontSize: "16px",
+              backgroundColor: selectedAnswers.includes(option)
+                ? "#5a3e36"
+                : "white",
+              color: selectedAnswers.includes(option) ? "white" : "#5a3e36",
+              border: "2px solid #5a3e36",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            {option}
           </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            대관령 양떼목장
-          </button>
-          <button onClick={handleCorrectAnswer} className="quiz-button">
-            외도 보타니아
-          </button>
-          <button onClick={handleWrongAnswer} className="quiz-button">
-            제주 오름
-          </button>
-        </div>
-        <button onClick={onClose} className="close-button">
-          닫기
-        </button>
+        ))}
       </div>
+      <button
+        onClick={handleSubmit}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginBottom: "10px",
+        }}
+      >
+        제출
+      </button>
+      {feedback !== null && (
+        <p
+          style={{
+            fontSize: "16px",
+            marginTop: "10px",
+            color: feedback ? "green" : "red",
+          }}
+        >
+          {feedback
+            ? "정답입니다! 다음 단계로 이동합니다."
+            : "틀렸습니다. 다시 시도해 보세요."}
+        </p>
+      )}
+      <button
+        onClick={onClose}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#5a3e36",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "10px",
+        }}
+      >
+        닫기
+      </button>
     </div>
   );
 }
-
-export default Quiz9;
