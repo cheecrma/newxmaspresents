@@ -1,3 +1,50 @@
+/* 폰트 설정 */
+/* 제목용 */
+@font-face {
+  font-family: 'KBO-Dia-Gothic_bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'establishRetrosansOTF';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRetrosansOTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24Supermagic-Bold-v1.0';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 설명용 */
+/* 고딕 */
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+/* 명조  */
+@font-face {
+  font-family: 'GowunDodum-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 귀여움 */
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 전체 화면에 스크롤이 생기지 않도록 설정 */
 html,
 body {
@@ -5,6 +52,16 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden; /* 스크롤 방지 */
+
+  /* 모바일-웹 화면 동일 구성을 위한 max-width 적용 */
+  /* max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2f2f2; */
+
+  /* 폰트 */
+  font-family: "Cafe24Supermagic-Bold-v1.0", "LeeSeoyun", "Pretendard-Regular", "KBO-Dia-Gothic_bold";
+
 }
 
 #root {
