@@ -17,7 +17,7 @@
     rgba(255, 255, 0, 0.7),
     rgba(255, 255, 0, 0.1)
   );
-  border-radius: 50%; /* 원형 효과 */
+  border-radius: 70%; /* 원형 효과 */
   z-index: 1; /* 버튼 뒤에 배치 */
   animation: glow-pulse 1.5s infinite; /* 애니메이션 반복 */
 }
@@ -29,6 +29,26 @@
   height: 50px;
   z-index: 2; /* glow-effect 위에 배치 */
   cursor: pointer;
+}
+
+/* hover시 잘 보이도록 개선 */
+.stage-button:hover {
+  transform: scale(1.15);
+}
+
+.stage-button-container:hover .glow-effect {
+  background: radial-gradient(
+    circle,
+    #47b8be, /* 변경된 색상 */
+    rgba(0, 255, 255, 0.1)
+  );
+}
+
+/* disabled시에 background 삭제 > 남은 퀴즈 잘보이도록 개선 */
+
+.stage-button-container.disabled .glow-effect {
+  background: gainsboro;
+  animation: none; 
 }
 
 /* glow 애니메이션 키프레임 */
