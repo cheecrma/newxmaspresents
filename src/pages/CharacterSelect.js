@@ -41,32 +41,45 @@ function CharacterSelect() {
 
   return (
     <div className="character-select-container">
-      <h1 className="title">캐릭터를 선택하고 이름을 입력하세요</h1>
+      <h1 className="title">캐릭터를 선택하고 이름을 입력하세요 ❗</h1>
       <div className="character-list">
-        <CharacterCard
+        
+        <div className="card-container">
+          <CharacterCard
           imageSrc="/images/character1.png"
           name="캐릭터 1"
           isSelected={selectedCharacter === "character1"}
           onSelect={() => handleCharacterSelect("character1")}
-        />
-        <CharacterCard
+          />
+        </div>
+
+        <div>
+          <CharacterCard
           imageSrc="/images/character2.png"
           name="캐릭터 2"
           isSelected={selectedCharacter === "character2"}
           onSelect={() => handleCharacterSelect("character2")}
-        />
-        <CharacterCard
-          imageSrc="/images/character3.png"
-          name="캐릭터 3"
-          isSelected={selectedCharacter === "character3"}
-          onSelect={() => handleCharacterSelect("character3")}
-        />
-        <CharacterCard
+          />
+        </div>
+        
+        <div>
+          <CharacterCard
+            imageSrc="/images/character3.png"
+            name="캐릭터 3"
+            isSelected={selectedCharacter === "character3"}
+            onSelect={() => handleCharacterSelect("character3")}
+          />
+        </div>
+
+        <div>
+          <CharacterCard
           imageSrc="/images/character4.png"
           name="캐릭터 4"
           isSelected={selectedCharacter === "character4"}
           onSelect={() => handleCharacterSelect("character4")}
-        />
+          />
+        </div>
+
       </div>
 
       {/* 캐릭터 설명 표시 */}
@@ -78,13 +91,14 @@ function CharacterSelect() {
 
       <input
         type="text"
-        placeholder="캐릭터 이름을 입력하세요 (최대 7글자)"
+        placeholder="이름을 입력하세요 (최대 7글자)"
         value={name}
         onChange={handleNameChange}
         className="name-input"
       />
+
       <button className="start-button" onClick={handleStartAdventure}>
-        모험 시작하기
+        시작하기
       </button>
     </div>
   );

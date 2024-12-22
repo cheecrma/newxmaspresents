@@ -5,6 +5,7 @@ import PresentAnimation from "./components/PresentAnimation";
 import Instructions from "./pages/Instructions";
 import CharacterSelect from "./pages/CharacterSelect";
 import Map from "./pages/Map";
+import Error from "./pages/Error"
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/character-select" element={<CharacterSelect />} />
         <Route path="/map" element={<Map />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
