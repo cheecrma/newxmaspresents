@@ -5,7 +5,6 @@ import "./Home.css";
 
 
 
-
 function Home() {
   return (
     <div style={styles.container}>

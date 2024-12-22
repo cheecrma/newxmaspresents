@@ -1,8 +1,10 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Instructions() {
   const navigate = useNavigate();
+  const [isButtonActive, setIsButtonActive] = useState(false);
 
   const handleNext = () => {
     navigate("/character-select");
@@ -11,17 +13,26 @@ function Instructions() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.title}>신비한 옷장에 오신 것을 환영합니다</h1>
+        <h1 style={styles.title}>신비한 '호앤리 옷장'에 <br />오신 것을 환영합니다!</h1>
         <p style={styles.description}>
-          이 모험은 올 한 해 수고한 여러분을 위해 준비한 작은 놀이터입니다.
+          2024 한 해 수고하신 H&R 가족들을 위해 <br />준비한 작은 즐거움입니다.
           <br />
           가볍게 즐기며 소소한 재미를 느껴보세요!
         </p>
         <p style={styles.note}>
-          (제작자들이 업무 시간 외에 취미로 만든 프로젝트로 <br />
+          (제작자들이 <span style={styles.note_span}>업무 시간 외에 취미로</span> 만든 프로젝트로 <br />
           재밌게 귀엽게 봐주시길 바랍니다)
         </p>
-        <button style={styles.button} onClick={handleNext}>
+        <button
+          style={{
+            ...styles.button,
+            ...(isButtonActive ? styles.buttonActive : {}),
+          }}
+          onMouseDown={() => setIsButtonActive(true)} // 눌림
+          onMouseUp={() => setIsButtonActive(false)} // 원래 상태
+          onMouseLeave={() => setIsButtonActive(false)} //  복귀
+          onClick={handleNext}
+        >
           캐릭터 생성하기
         </button>
       </div>
@@ -41,32 +52,43 @@ const styles = {
     color: "#5a3e36",
   },
   card: {
-    backgroundColor: "#fff",
     padding: "40px 30px",
-    borderRadius: "15px",
-    boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
     textAlign: "center",
     maxWidth: "500px",
     width: "100%",
+    backgroundImage: "url('/images/instruction_img.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+ 
   },
   title: {
     fontSize: "2rem",
     fontWeight: "bold",
-    fontFamily: "'Dancing Script', cursive",
     marginBottom: "20px",
     color: "#5a3e36",
+    wordWrap: "break-word",
+    fontFamily: "LeeSeoyun",
   },
   description: {
     fontSize: "1.1rem",
     marginBottom: "20px",
     lineHeight: "1.6",
+    wordWrap: "break-word",
+    paddingLeft: "50px",
+    paddingRight: "40px",
+    fontFamily: "LeeSeoyun",
   },
   note: {
     fontSize: "1rem",
     color: "#7d5a50",
-    fontStyle: "italic",
+    // fontStyle: "italic",
     marginBottom: "30px",
     lineHeight: "1.4",
+    fontFamily: "LeeSeoyun",
+  },
+  note_span: {
+    textDecoration: "underline",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.2)"
   },
   button: {
     padding: "12px 24px",
@@ -76,11 +98,15 @@ const styles = {
     border: "none",
     borderRadius: "8px",
     cursor: "pointer",
-    transition: "background-color 0.3s",
+    transition: "all 0.2s ease",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)", 
+    fontFamily: "LeeSeoyun",
   },
-  buttonHover: {
-    backgroundColor: "#7d5a50",
+  buttonActive: {
+    boxShadow: "0px 2px 3px rgba(0, 0, 0, 0.2)", 
+    transform: "translateY(2px)", 
   },
 };
+
 
 export default Instructions;
