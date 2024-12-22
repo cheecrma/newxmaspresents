@@ -8,8 +8,18 @@
   transition: transform 0.2s, border-color 0.2s;
   width: 150px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'LeeSeoyun';
 }
 
+.character-card p {
+  color: #5a3e36;
+  text-shadow: none;
+}
+
+.character-card.selected p {
+  color: white;
+  text-shadow: none;
+}
 .character-card:hover {
   transform: scale(1.05);
 }
@@ -17,6 +27,8 @@
 .character-card.selected {
   border-color: #5a3e36;
   box-shadow: 0px 4px 20px rgba(90, 62, 54, 0.3);
+  background-color: #6d3fc9;
+  color: white;
 }
 
 .character-image {
@@ -25,6 +37,7 @@
   border-radius: 50%;
   margin-bottom: 10px;
 }
+
 
 .character-name {
   font-size: 1rem;

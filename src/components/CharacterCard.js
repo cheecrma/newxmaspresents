@@ -8,7 +8,7 @@ function CharacterCard({ imageSrc, name, isSelected, onSelect }) {
       onClick={onSelect}
     >
       <img src={imageSrc} alt={name} className="character-image" />
-      <h3 className="character-name">{name}</h3>
+      <p className="character-name">{name}</p>
     </div>
   );
 }

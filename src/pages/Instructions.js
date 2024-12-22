@@ -105,6 +105,7 @@ const styles = {
   buttonActive: {
     boxShadow: "0px 2px 3px rgba(0, 0, 0, 0.2)", 
     transform: "translateY(2px)", 
+    Animation: "shake 0.5s ease-in-out"
   },
 };
 
