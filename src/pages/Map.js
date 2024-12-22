@@ -115,7 +115,16 @@ function Map() {
   };
 
   return (
-    <div ref={mapRef} className="map-container">
+    <div
+      ref={mapRef}
+      className="map-container"
+      style={{
+        backgroundImage: "url('/images/background.png')",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+      }}
+    >
       <header className="map-header">
         <div className="character-info">
           <img
@@ -125,7 +134,7 @@ function Map() {
           />
           <span className="character-name">{name}</span>
         </div>
-        <h1 className="map-title">스테이지 맵</h1>
+        <h1 className="map-title">호앤리 &nbsp; 지도</h1>
         <button className="help-button" onClick={() => setShowHelp(true)}>
           도움말
         </button>
@@ -172,20 +181,27 @@ function Map() {
 
       {/* 완료 화면 */}
       {showCompletion && (
-        <div className="completion-certificate">
-          <h2>🎉 모험 완료 증명서 🎉</h2>
-          <img
-            src={`/images/${selectedCharacter}.png`}
-            alt="Character"
-            className="certificate-image"
-          />
-          <p className="certificate-message">
-            {characterMessages[selectedCharacter]}
-          </p>
-          <p className="certificate-name">{name}</p>
-          <button onClick={captureMap}>화면 저장</button>
-          <button onClick={copyLink}>링크 복사</button>
-          <button onClick={handleRestart}>처음으로 돌아가기</button>
+        <div className="completion-container">
+          {/* 증명서 영역 */}
+          <div className="completion-certificate" id="certificate">
+            <h2>🎉 모험 완료 증명서 🎉</h2>
+            <img
+              src={`/images/${selectedCharacter}.png`}
+              alt="Character"
+              className="certificate-image"
+            />
+            <p className="certificate-message">
+              {characterMessages[selectedCharacter]}
+            </p>
+            <p className="certificate-name">{name}</p>
+          </div>
+
+          {/* 버튼 영역 */}
+          <div className="completion-buttons">
+            <button onClick={captureMap}>증명서 저장하기</button>
+            <button onClick={copyLink}>링크 복사</button>
+            <button onClick={handleRestart}>처음으로 돌아가기</button>
+          </div>
         </div>
       )}
 
@@ -194,10 +210,21 @@ function Map() {
         <div className="help-overlay" onClick={() => setShowHelp(false)}>
           <div className="help-content">
             <p>
-              각 스테이지를 클릭하고 문제를 해결하세요. 모든 스테이지를 완료하면
+              각 스테이지를 클릭하고 문제를 해결하세요.
+              <br />
+              모든 스테이지를 완료하면
+              <br />
               특별한 보상을 받을 수 있습니다!
+              <br />
+              <br />
+              플레이가 저장되지 않으므로 주의 바랍니다.
             </p>
-            <button onClick={() => setShowHelp(false)}>닫기</button>
+            <button
+              className="help-close-button"
+              onClick={() => setShowHelp(false)}
+            >
+              닫기
+            </button>
           </div>
         </div>
       )}
