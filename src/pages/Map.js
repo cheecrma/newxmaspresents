@@ -78,36 +78,35 @@ function Map() {
     confettiInstance.current = instance;
   };
 
-     // 컨페티 애니메이션
-     const fireConfetti = () => {
-      const duration = 5 * 1000; // 5초
-      const end = Date.now() + duration;
-  
-      const frame = () => {
-        confettiInstance.current &&
-          confettiInstance.current({
-            particleCount: 2,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-          });
-  
-        confettiInstance.current &&
-          confettiInstance.current({
-            particleCount: 2,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-          });
-  
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      };
-  
-      frame();
+  // 컨페티 애니메이션
+  const fireConfetti = () => {
+    const duration = 5 * 1000; // 5초
+    const end = Date.now() + duration;
+
+    const frame = () => {
+      confettiInstance.current &&
+        confettiInstance.current({
+          particleCount: 2,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+
+      confettiInstance.current &&
+        confettiInstance.current({
+          particleCount: 2,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
     };
-  
+
+    frame();
+  };
 
   // 스테이지 클릭 시 퀴즈 열기
   const handleStageClick = (index) => {
@@ -118,7 +117,6 @@ function Map() {
   const handleQuizClose = () => {
     setCurrentQuiz(null);
   };
-
 
   // 퀴즈 정답 처리
   const handleQuizCorrect = (index) => {
@@ -172,16 +170,14 @@ function Map() {
             alt="Character"
             className="character-image"
           />
-          <span className="character-name"><span >{name}</span> 모험가님</span>
+          <span className="character-name">
+            <span>{name}</span> 모험가님
+          </span>
         </div>
         <h1 className="map-title">호앤리&nbsp;모험지도 </h1>
 
-
         <button className="help-button" onClick={() => setShowHelp(true)}>
-          <img 
-            src={`/images/help.png`}
-            alt="Help"
-            className="help-image"></img>
+          <img src={`/images/help.png`} alt="Help" className="help-image"></img>
           <p> 도움말</p>
         </button>
       </header>
@@ -260,10 +256,11 @@ function Map() {
               <br />
               모든 스테이지를 완료하면
               <br />
-              특별한 무언가가 기다리고 있을지도 ... 
+              특별한 무언가가 기다리고 있을지도 ...
               <br />
               <br />
-              <span>⚠ 플레이는 저장되지 않습니다</span> <br></br>(뒤로가면 처음부터 다시 ..)
+              <span>⚠ 플레이는 저장되지 않습니다</span> <br></br>(뒤로가면
+              처음부터 다시 ..)
             </p>
             <button
               className="help-close-button"

@@ -28,6 +28,7 @@ export default function LoadingScreen({ onLoadComplete }) {
       "/images/instruction_img.png",
       "/images/map.png",
       "/images/wardrobe.png",
+      "/images/help.png",
       // 필요한 다른 이미지 경로 추가
     ];
 
