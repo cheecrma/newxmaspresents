@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
+import Confetti from "react-canvas-confetti";
 import StageButton from "../components/StageButton";
 import Quiz1 from "../components/quiz/Quiz1";
 import Quiz2 from "../components/quiz/Quiz2";
@@ -70,7 +71,43 @@ function Map() {
   const [showCompletion, setShowCompletion] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const mapRef = useRef(null);
+  const confettiInstance = useRef(null);
   const navigate = useNavigate();
+
+  const getInstance = (instance) => {
+    confettiInstance.current = instance;
+  };
+
+     // 컨페티 애니메이션
+     const fireConfetti = () => {
+      const duration = 5 * 1000; // 5초
+      const end = Date.now() + duration;
+  
+      const frame = () => {
+        confettiInstance.current &&
+          confettiInstance.current({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+          });
+  
+        confettiInstance.current &&
+          confettiInstance.current({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+          });
+  
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+  
+      frame();
+    };
+  
 
   // 스테이지 클릭 시 퀴즈 열기
   const handleStageClick = (index) => {
@@ -82,6 +119,7 @@ function Map() {
     setCurrentQuiz(null);
   };
 
+
   // 퀴즈 정답 처리
   const handleQuizCorrect = (index) => {
     const newClearedStages = [...clearedStages];
@@ -90,6 +128,7 @@ function Map() {
     setCurrentQuiz(null);
     if (newClearedStages.every((stage) => stage)) {
       setShowCompletion(true);
+      fireConfetti();
     }
   };
 
@@ -125,6 +164,7 @@ function Map() {
         backgroundSize: "cover",
       }}
     >
+      <Confetti refConfetti={getInstance} />
       <header className="map-header">
         <div className="character-info">
           <img
