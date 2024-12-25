@@ -132,11 +132,17 @@ function Map() {
             alt="Character"
             className="character-image"
           />
-          <span className="character-name">{name}</span>
+          <span className="character-name"><span >{name}</span> 모험가님</span>
         </div>
-        <h1 className="map-title">호앤리 &nbsp; 지도</h1>
+        <h1 className="map-title">호앤리&nbsp;모험지도 </h1>
+
+
         <button className="help-button" onClick={() => setShowHelp(true)}>
-          도움말
+          <img 
+            src={`/images/help.png`}
+            alt="Help"
+            className="help-image"></img>
+          <p> 도움말</p>
         </button>
       </header>
 
@@ -210,14 +216,14 @@ function Map() {
         <div className="help-overlay" onClick={() => setShowHelp(false)}>
           <div className="help-content">
             <p>
-              각 스테이지를 클릭하고 문제를 해결하세요.
+              각 사업본부 스테이지를 클릭해 문제를 풀어주세요!<br></br>
               <br />
               모든 스테이지를 완료하면
               <br />
-              특별한 보상을 받을 수 있습니다!
+              특별한 무언가가 기다리고 있을지도 ... 
               <br />
               <br />
-              플레이가 저장되지 않으므로 주의 바랍니다.
+              <span>⚠ 플레이는 저장되지 않습니다</span> <br></br>(뒤로가면 처음부터 다시 ..)
             </p>
             <button
               className="help-close-button"
