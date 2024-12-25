@@ -1,37 +1,50 @@
 .character-select-container {
   text-align: center;
-  padding: 20px; 
+  padding: 20px;
   background-color: #f5f0e1;
   min-height: 100vh;
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .title {
   font-size: 1.8rem;
   color: #5a3e36;
   margin-bottom: 40px;
-  font-family: "Cafe24Supermagic-Bold-v1.0",
+  font-family: "Cafe24Supermagic-Bold-v1.0";
 }
 
 .character-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; 
+  display: grid; /* Grid 레이아웃으로 변경 */
+  grid-template-columns: repeat(2, 1fr); /* 항상 2열 구성 */
+  gap: 20px; /* 카드 간 간격 */
   justify-content: center;
   margin-bottom: 20px;
+  width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
+  max-width: 600px; /* 최대 너비 제한 */
+}
 
+.character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 180px; /* 최대 크기 제한 */
+  min-width: 100px;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .character-description {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   color: #5a3e36;
   margin: 10px 0;
   text-align: center;
-  font-family: 'LeeSeoyun';
+  font-family: "LeeSeoyun";
 
   background: linear-gradient(to top, #ccb3ff 30%, transparent 10%);
   animation: slideUp 5s infinite;
@@ -39,18 +52,18 @@
 }
 
 .name-input {
-  padding: 8px; 
-  font-size: 1.1rem; 
+  padding: 8px;
+  font-size: 1.1rem;
   width: 90%;
-  max-width: 300px; 
+  max-width: 300px;
   margin-bottom: 20px;
   border: 2px solid #5a3e36;
   border-radius: 5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-input::placeholder { 
-  font-family: 'LeeSeoyun';
+input::placeholder {
+  font-family: "LeeSeoyun";
   color: rgb(182, 169, 171);
 }
 
@@ -64,7 +77,7 @@ input::placeholder {
   cursor: pointer;
   transition: background-color 0.3s;
   width: 90%;
-  max-width: 300px; 
+  max-width: 300px;
   font-family: "Cafe24Supermagic-Bold-v1.0";
 }
 
@@ -111,15 +124,18 @@ input::placeholder {
   }
 
   .character-list {
-    flex-direction: column; 
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr); /* 여전히 2열 */
+    gap: 15px; /* 간격 줄임 */
+  }
+  .character-card {
+    max-width: 140px; /* 태블릿에서는 크기 축소 */
   }
 }
 
 /* 반응형 디자인: 화면 너비가 375px 이하 (아이폰 SE 등 작은 화면) */
-@media (max-width: 375px) {
+@media (max-width: 480px) {
   .title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     margin-bottom: 15px;
   }
 
@@ -138,5 +154,13 @@ input::placeholder {
     font-size: 0.8rem; /* 버튼 글자 크기 축소 */
     padding: 6px 12px; /* 버튼 여백 축소 */
     width: 100%; /* 버튼이 화면에 꽉 차도록 */
+  }
+
+  .character-list {
+    grid-template-columns: repeat(2, 1fr); /* 여전히 2열 */
+    gap: 10px; /* 간격 더 축소 */
+  }
+  .character-card {
+    max-width: 120px; /* 작은 화면에서는 더 작은 크기 */
   }
 }
