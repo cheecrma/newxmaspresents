@@ -34,7 +34,7 @@ function Quiz8({ onCorrect, onClose }) {
     <div className="quiz-container">
       <div className="quiz-content">
         <h2 className="quiz-title">여수 벨메르</h2>
-        <p className="quiz-question">"벨메르(Belmer)"는 무슨 뜻일까요?</p>
+        <p className="quiz-question">"벨메르(Belle Mer)"는 무슨 뜻일까요?</p>
         <div className="quiz-options">
           <button onClick={handleCorrectAnswer} className="quiz-button">
             아름다운 바다

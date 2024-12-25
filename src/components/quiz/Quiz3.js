@@ -36,7 +36,7 @@ function Quiz3({ onCorrect, onClose }) {
       <div className="quiz-content">
         <h2 className="quiz-title">설악 쏘라노</h2>
         <p className="quiz-question">
-          설악 쏘라노 리조트에서 여름철 가족들에게 인기 있는 시설은 무엇일까요?
+          설악 쏘라노에서 여름철 가족들에게 <br></br>인기 있는 시설은 무엇일까요?
         </p>
         <div className="quiz-options">
           <button onClick={handleWrongAnswer} className="quiz-button">
