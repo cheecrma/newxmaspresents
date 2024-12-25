@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
+import Confetti from "react-canvas-confetti";
 import StageButton from "../components/StageButton";
 import Quiz1 from "../components/quiz/Quiz1";
 import Quiz2 from "../components/quiz/Quiz2";
@@ -70,7 +71,43 @@ function Map() {
   const [showCompletion, setShowCompletion] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const mapRef = useRef(null);
+  const confettiInstance = useRef(null);
   const navigate = useNavigate();
+
+  const getInstance = (instance) => {
+    confettiInstance.current = instance;
+  };
+
+     // 컨페티 애니메이션
+     const fireConfetti = () => {
+      const duration = 5 * 1000; // 5초
+      const end = Date.now() + duration;
+  
+      const frame = () => {
+        confettiInstance.current &&
+          confettiInstance.current({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+          });
+  
+        confettiInstance.current &&
+          confettiInstance.current({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+          });
+  
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+  
+      frame();
+    };
+  
 
   // 스테이지 클릭 시 퀴즈 열기
   const handleStageClick = (index) => {
@@ -82,6 +119,7 @@ function Map() {
     setCurrentQuiz(null);
   };
 
+
   // 퀴즈 정답 처리
   const handleQuizCorrect = (index) => {
     const newClearedStages = [...clearedStages];
@@ -90,6 +128,7 @@ function Map() {
     setCurrentQuiz(null);
     if (newClearedStages.every((stage) => stage)) {
       setShowCompletion(true);
+      fireConfetti();
     }
   };
 
@@ -125,6 +164,7 @@ function Map() {
         backgroundSize: "cover",
       }}
     >
+      <Confetti refConfetti={getInstance} />
       <header className="map-header">
         <div className="character-info">
           <img
@@ -132,11 +172,17 @@ function Map() {
             alt="Character"
             className="character-image"
           />
-          <span className="character-name">{name}</span>
+          <span className="character-name"><span >{name}</span> 모험가님</span>
         </div>
-        <h1 className="map-title">호앤리 &nbsp; 지도</h1>
+        <h1 className="map-title">호앤리&nbsp;모험지도 </h1>
+
+
         <button className="help-button" onClick={() => setShowHelp(true)}>
-          도움말
+          <img 
+            src={`/images/help.png`}
+            alt="Help"
+            className="help-image"></img>
+          <p> 도움말</p>
         </button>
       </header>
 
@@ -210,14 +256,14 @@ function Map() {
         <div className="help-overlay" onClick={() => setShowHelp(false)}>
           <div className="help-content">
             <p>
-              각 스테이지를 클릭하고 문제를 해결하세요.
+              각 사업본부 스테이지를 클릭해 문제를 풀어주세요!<br></br>
               <br />
               모든 스테이지를 완료하면
               <br />
-              특별한 보상을 받을 수 있습니다!
+              특별한 무언가가 기다리고 있을지도 ... 
               <br />
               <br />
-              플레이가 저장되지 않으므로 주의 바랍니다.
+              <span>⚠ 플레이는 저장되지 않습니다</span> <br></br>(뒤로가면 처음부터 다시 ..)
             </p>
             <button
               className="help-close-button"

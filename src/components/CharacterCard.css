@@ -14,6 +14,7 @@
 .character-card p {
   color: #5a3e36;
   text-shadow: none;
+  font-size: 1.2rem;
 }
 
 .character-card.selected p {

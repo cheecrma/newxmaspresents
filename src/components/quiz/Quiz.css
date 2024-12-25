@@ -40,6 +40,7 @@
   line-height: 1.5;
   margin-bottom: 25px;
   color: #4a4a4a;
+  font-family: 'LeeSeoyun';
 }
 
 /* 옵션 버튼 스타일 */
@@ -47,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  align-items: center;
 }
 
 .quiz-button {
@@ -58,7 +60,11 @@
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
-  width: 100%;
+  /* width: 100%; */
+  font-family: 'LeeSeoyun';
+  width: 60%; /* 퀴즈 컨테이너의 60%로 설정 */
+  max-width: 300px;
+  text-align: center; /* 버튼의 최대 너비 제한 */
 }
 
 .quiz-button:hover {
@@ -84,6 +90,9 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  font-family: 'LeeSeoyun';
+  font-size: 1rem;
+  
 }
 
 .close-button:hover {
@@ -110,4 +119,30 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* sweetalert2 팝업창 커스텀 */
+
+.swalicon { 
+  size: 30px;
+}
+.htmlContainer {
+  font-family: 'LeeSeoyun';
+}
+
+.confirmButton {
+  font-family: 'LeeSeoyun';
+  color: #fff;
+  background-color: #5a3e36;
+  padding: 8px 30px;
+  margin-right: 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmButton:hover {
+  background-color: #7d5a50; /* 밝은 브라운 톤 */
 }

@@ -3,10 +3,13 @@
 "use client";
 
 import { useState } from "react";
+import "./Quiz.css";
 
 export default function Quiz9({ onCorrect, onClose }) {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [feedback, setFeedback] = useState(null);
+  const [isSubmitHover, setIsSubmitHover] = useState(false);
+  const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 목록
   const correctAnswers = ["테마파크", "부산"];
@@ -43,21 +46,30 @@ export default function Quiz9({ onCorrect, onClose }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "50%",
-        padding: "20px",
         textAlign: "center",
-        backgroundColor: "#f5f0e1",
+        backgroundColor: "#ffffff", // 배경색
+        padding: "40px 30px", // 내부 여백
+        borderRadius: "20px", // 둥근 모서리
+        boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)", // 그림자 효과
+        maxWidth: "420px", // 최대 너비
+        width: "90%", // 상대적인 너비
+        position: "relative", // 위치
+        animation: "fadeIn 0.3s ease-in-out",
       }}
     >
-      <p style={{ fontSize: "18px", marginBottom: "20px" }}>
+      <h2 className="quiz-title">마티에 오시리아</h2>
+      <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "20px" }}>
         "마티에 오시리아"와 공통점이 있는 단어들을 모두 고르세요.
       </p>
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexWrap: "wrap", 
           gap: "10px",
           marginBottom: "20px",
+          fontFamily: "LeeSeoyun",
+          justifyContent: "center",
+          width: "100%",
         }}
       >
         {options.map((option) => (
@@ -66,7 +78,7 @@ export default function Quiz9({ onCorrect, onClose }) {
             onClick={() => handleOptionClick(option)}
             style={{
               padding: "10px",
-              fontSize: "16px",
+              fontSize: "1rem",
               backgroundColor: selectedAnswers.includes(option)
                 ? "#5a3e36"
                 : "white",
@@ -74,55 +86,69 @@ export default function Quiz9({ onCorrect, onClose }) {
               border: "2px solid #5a3e36",
               borderRadius: "5px",
               cursor: "pointer",
+              fontFamily: "LeeSeoyun",
+              width: "60%",
             }}
           >
             {option}
           </button>
         ))}
       </div>
-      <button
-        onClick={handleSubmit}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#5a3e36",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          fontSize: "16px",
-          marginBottom: "10px",
-        }}
-      >
-        제출
-      </button>
       {feedback !== null && (
         <p
           style={{
             fontSize: "16px",
             marginTop: "10px",
-            color: feedback ? "green" : "red",
+            fontFamily: "LeeSeoyun",
+            color: feedback ? "green" : "rgb(190, 63, 0)",
           }}
         >
-          {feedback
-            ? "정답입니다! 다음 단계로 이동합니다."
-            : "틀렸습니다. 다시 시도해 보세요."}
+          {feedback ? "정답입니다!" : "틀렸습니다. 다시 시도해 보세요."}
         </p>
       )}
-      <button
-        onClick={onClose}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#5a3e36",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          fontSize: "16px",
+      <div style={{
+          display: "flex",
+          flexDirection: "row", // 버튼을 가로로 정렬
+          gap: "10px", // 버튼 간격
           marginTop: "10px",
-        }}
+        }}>
+        <button
+       style={{
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+        fontSize: "16px",
+        fontFamily: "LeeSeoyun",
+        transition: "background-color 0.3s ease",
+        backgroundColor: isSubmitHover ? "#7d5a50" : "#5a3e36",
+        color: "white",
+      }}
+      onMouseEnter={() => setIsSubmitHover(true)}
+      onMouseLeave={() => setIsSubmitHover(false)}
+      onClick={handleSubmit}
+      >
+        제출
+      </button>
+      <button
+       style={{
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+        fontSize: "16px",
+        fontFamily: "LeeSeoyun",
+        transition: "background-color 0.3s ease",
+        backgroundColor: isCloseHover ? "#cccccc" : "#e5e5e5",
+        color: "#4a4a4a",
+      }}
+      onMouseEnter={() => setIsCloseHover(true)}
+      onMouseLeave={() => setIsCloseHover(false)}
+      onClick={onClose}
       >
         닫기
       </button>
+      </div> 
     </div>
   );
 }
