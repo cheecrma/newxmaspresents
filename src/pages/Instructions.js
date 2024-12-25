@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +12,20 @@ function Instructions() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.title}>신비한 '호앤리 옷장'에 <br />오신 것을 환영합니다!</h1>
+        <h1 style={styles.title}>
+          신비한 '호앤리 옷장'에 <br />
+          오신 것을 환영합니다!
+        </h1>
         <p style={styles.description}>
-          2024 한 해 수고하신 H&R 가족들을 위해 <br />준비한 작은 즐거움입니다.
+          2024 한 해 수고하신 H&R 가족들을 위해 <br />
+          준비한 작은 즐거움입니다.
           <br />
           가볍게 즐기며 소소한 재미를 느껴보세요!
         </p>
         <p style={styles.note}>
-          (제작자들이 <span style={styles.note_span}>업무 시간 외에 취미로</span> 만든 프로젝트로 <br />
+          (제작자들이{" "}
+          <span style={styles.note_span}>업무 시간 외에 취미로</span> 만든
+          프로젝트로 <br />
           재밌게 귀엽게 봐주시길 바랍니다)
         </p>
         <button
@@ -30,7 +35,7 @@ function Instructions() {
           }}
           onMouseDown={() => setIsButtonActive(true)} // 눌림
           onMouseUp={() => setIsButtonActive(false)} // 원래 상태
-          onMouseLeave={() => setIsButtonActive(false)} //  복귀
+          onMouseLeave={() => setIsButtonActive(false)} // 복귀
           onClick={handleNext}
         >
           캐릭터 생성하기
@@ -58,8 +63,7 @@ const styles = {
     width: "100%",
     backgroundImage: "url('/images/instruction_img.png')",
     backgroundSize: "cover",
-    backgroundPosition: "center"
- 
+    backgroundPosition: "center",
   },
   title: {
     fontSize: "2rem",
@@ -88,7 +92,7 @@ const styles = {
   },
   note_span: {
     textDecoration: "underline",
-    borderBottom: "1px solid rgba(0, 0, 0, 0.2)"
+    borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
   },
   button: {
     padding: "12px 24px",
@@ -99,15 +103,14 @@ const styles = {
     borderRadius: "8px",
     cursor: "pointer",
     transition: "all 0.2s ease",
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)", 
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)",
     fontFamily: "LeeSeoyun",
   },
   buttonActive: {
-    boxShadow: "0px 2px 3px rgba(0, 0, 0, 0.2)", 
-    transform: "translateY(2px)", 
-    Animation: "shake 0.5s ease-in-out"
+    boxShadow: "0px 2px 3px rgba(0, 0, 0, 0.2)",
+    transform: "translateY(2px)",
+    Animation: "shake 0.5s ease-in-out",
   },
 };
-
 
 export default Instructions;
