@@ -111,3 +111,29 @@
     transform: scale(1);
   }
 }
+
+/* sweetalert2 팝업창 커스텀 */
+
+.swalicon { 
+  size: 30px;
+}
+.htmlContainer {
+  font-family: 'LeeSeoyun';
+}
+
+.confirmButton {
+  font-family: 'LeeSeoyun';
+  color: #fff;
+  background-color: #5a3e36;
+  padding: 8px 30px;
+  margin-right: 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmButton:hover {
+  background-color: #7d5a50; /* 밝은 브라운 톤 */
+}
