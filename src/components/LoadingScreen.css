@@ -1,0 +1,61 @@
+/* 전체 로딩 화면 배경과 중앙 정렬 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: black; /* 텍스트 색상 */
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* 텍스트 애니메이션 */
+.loading-text {
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 20px;
+  animation: slideIn 1.2s ease forwards;
+}
+
+/* 로딩바 스타일 */
+.loading-bar {
+  width: 80%;
+  height: 8px;
+  background-color: #444;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.loading-progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+/* 캐릭터 이미지 애니메이션 */
+.loading-character {
+  width: 150px;
+  height: auto;
+  animation: slideIn 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* 애니메이션 정의 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
