@@ -63,34 +63,39 @@ function CharacterSelect() {
       handleStartAdventure();
     }
   };
-
+  
+  console.log("select",selectedCharacter)
   return (
     <div className="character-select-container">
       <h1 className="title">캐릭터를 선택하고 이름을 입력하세요 ❗</h1>
       <div className="character-list">
         <CharacterCard
-          imageSrc="/images/character1.png"
-          name="캐릭터 1"
-          isSelected={selectedCharacter === "character1"}
-          onSelect={() => handleCharacterSelect("character1")}
+          className="character-img"
+          imageSrc="/images/character/rabbit.jpg"
+          name="친절한 프런트 토끼"
+          isSelected={selectedCharacter === "rabbit"}
+          onSelect={() => handleCharacterSelect("rabbit")}
         />
         <CharacterCard
-          imageSrc="/images/character2.png"
-          name="캐릭터 2"
-          isSelected={selectedCharacter === "character2"}
-          onSelect={() => handleCharacterSelect("character2")}
+          className="character-img"
+          imageSrc="/images/character/dog.jpg"
+          name="바쁜 부대업장 강아지"
+          isSelected={selectedCharacter === "dog"}
+          onSelect={() => handleCharacterSelect("dog")}
         />
         <CharacterCard
-          imageSrc="/images/character3.png"
-          name="캐릭터 3"
-          isSelected={selectedCharacter === "character3"}
-          onSelect={() => handleCharacterSelect("character3")}
+          className="character-img"
+          imageSrc="/images/character/bear.jpg"
+          name="든든한 세일즈 곰돌이"
+          isSelected={selectedCharacter === "bear"}
+          onSelect={() => handleCharacterSelect("bear")}
         />
         <CharacterCard
-          imageSrc="/images/character4.png"
-          name="캐릭터 4"
-          isSelected={selectedCharacter === "character4"}
-          onSelect={() => handleCharacterSelect("character4")}
+          className="character-img"
+          imageSrc="/images/character/cat.jpg"
+          name="야근하는 지원부서 고양이"
+          isSelected={selectedCharacter === "cat"}
+          onSelect={() => handleCharacterSelect("cat")}
         />
       </div>
 

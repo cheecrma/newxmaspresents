@@ -77,7 +77,7 @@ function Map() {
       content: {
         title: "Happy New Year!",
         description: "13개의 스테이지를 모두 클리어하세요!",
-        imageUrl: `/images/${selectedCharacter}.png`, // 공유할 이미지 URL
+        imageUrl: `/images/character/${selectedCharacter}.jpg`, // 공유할 이미지 URL
         link: {
           mobileWebUrl: "https://your-app-url.com",
           webUrl: "https://your-app-url.com",
@@ -186,6 +186,7 @@ function Map() {
     navigate("/");
   };
 
+  console.log("map", selectedCharacter)
   return (
     <div
       ref={mapRef}
@@ -201,7 +202,7 @@ function Map() {
       <header className="map-header">
         <div className="character-info">
           <img
-            src={`/images/${selectedCharacter}.png`}
+            src={`/images/character/${selectedCharacter}.jpg`}
             alt="Character"
             className="character-image"
           />
