@@ -5,7 +5,7 @@ function ErrorAlert() {
   const navigate = useNavigate();
 
   const returnHome = () => {
-    navigate("/Home");
+    navigate("/");
   };
 
   return (
