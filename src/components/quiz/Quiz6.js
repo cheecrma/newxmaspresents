@@ -48,7 +48,7 @@ function Quiz6({ onCorrect, onClose }) {
             서핑
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            스노클링
+            독서모임
           </button>
         </div>
         <button onClick={onClose} className="close-button">

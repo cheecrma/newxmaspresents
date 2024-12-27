@@ -13,8 +13,8 @@ export default function Quiz9({ onCorrect, onClose }) {
 
 
   // 정답 목록
-  const correctAnswers = ["리조트", "바다"];
-  const options = ["리조트", "피라미드", "바다"];
+  const correctAnswers = ["인피니티풀", "몽돌해변"];
+  const options = ["몽돌해변", "인피니티풀", "플라자CC 골프패키지"];
 
   const handleOptionClick = (option) => {
     // 선택한 옵션 추가/제거
@@ -58,9 +58,9 @@ export default function Quiz9({ onCorrect, onClose }) {
         animation: "fadeIn 0.3s ease-in-out", 
       }}
     >
-      <h2 className="quiz-title">거제 벨버디어/르씨엘</h2>
+      <h2 className="quiz-title">거제 벨버디어&르씨엘</h2>
       <p style={{ fontFamily: "LeeSeoyun", fontSize: "18px", marginBottom: "20px" }}>
-        "한화리조트 거제"와 공통점이 있는 단어들을 모두 고르세요.
+        "한화리조트 거제"에서 즐길 수 있는 것을 모두 고르세요.
       </p>
       <div
         style={{

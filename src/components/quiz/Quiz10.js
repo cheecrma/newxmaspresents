@@ -12,7 +12,7 @@ export default function Quiz10({ onCorrect, onClose }) {
   const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 설정
-  const correctAnswer = "불국사";
+  const correctAnswer = "뽀로로";
 
   const handleSubmit = () => {
     if (answer.trim() === correctAnswer) {
@@ -51,7 +51,7 @@ export default function Quiz10({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">경주</h2>
       <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "10px" }}>
-        "한화리조트 경주는 경주의 대표 명소 중 하나인 ___와 가깝다."
+        "한화리조트 경주"의 키즈룸 캐릭터는?
       </p>
       <p
         style={{
@@ -62,7 +62,7 @@ export default function Quiz10({ onCorrect, onClose }) {
           fontFamily: "LeeSeoyun",
         }}
       >
-        힌트: 경주의 대표적인 유네스코 문화유산
+        힌트: 000 아쿠아빌리지
       </p>
       <input
         type="text"

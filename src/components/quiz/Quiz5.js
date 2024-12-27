@@ -12,8 +12,8 @@ export default function Quiz5({ onCorrect, onClose }) {
   const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 목록
-  const correctAnswers = ["골프", "휴양지"];
-  const options = ["골프", "바다", "휴양지"];
+  const correctAnswers = ["플라자CC", "37.5 시그니처"];
+  const options = ["플라자CC", "워터피아","아쿠아플라넷", "37.5 시그니처"];
 
   const handleOptionClick = (option) => {
     // 선택한 옵션 추가/제거
@@ -59,7 +59,7 @@ export default function Quiz5({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">용인 베잔송</h2>
       <p style={{ fontFamily: "LeeSeoyun", fontSize: "18px", marginBottom: "20px" }}>
-        "용인 베잔송"과 공통점이 있는 단어들을 모두 고르세요.
+        "용인 베잔송"에 있는 시설을 모두 고르세요.
       </p>
       <div
         style={{

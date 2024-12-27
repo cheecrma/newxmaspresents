@@ -13,7 +13,7 @@ export default function Quiz12({ onCorrect, onClose }) {
 
 
   // 정답 설정
-  const correctAnswer = "해운대";
+  const correctAnswer = "뮤직룸";
 
   const handleSubmit = () => {
     if (answer.trim() === correctAnswer) {
@@ -52,7 +52,7 @@ export default function Quiz12({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">해운대</h2>
       <p style={{ fontFamily: "LeeSeoyun", fontSize: "18px", marginBottom: "10px" }}>
-        "한화리조트 해운대는 <br></br>부산의 대표 해변인 ___와 가까운 거리에 있다."
+        한화리조트 해운대에 있는 Instagrammable한 테마 객실 이름은?? (3글자)
       </p>
 
       <input

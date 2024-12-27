@@ -12,8 +12,8 @@ export default function Quiz7({ onCorrect, onClose }) {
   const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 목록
-  const correctAnswers = ["눈", "스키"];
-  const options = ["눈", "스키", "해수욕장"];
+  const correctAnswers = ["눈", "멍패커룸"];
+  const options = ["눈", "멍패커룸", "해수욕장"];
 
   const handleOptionClick = (option) => {
     // 선택한 옵션 추가/제거

@@ -12,8 +12,8 @@ export default function Quiz9({ onCorrect, onClose }) {
   const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 목록
-  const correctAnswers = ["테마파크", "부산"];
-  const options = ["테마파크", "사막", "부산"];
+  const correctAnswers = ["테마파크", "루지"];
+  const options = ["테마파크", "루지", "야구장", "광안리"];
 
   const handleOptionClick = (option) => {
     // 선택한 옵션 추가/제거
@@ -59,7 +59,7 @@ export default function Quiz9({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">마티에 오시리아</h2>
       <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "20px" }}>
-        "마티에 오시리아"와 공통점이 있는 단어들을 모두 고르세요.
+        "마티에 오시리아" 근처 3km 이내에서 <br></br> 즐길 수 있는 것을 모두 고르세요.
       </p>
       <div
         style={{

@@ -11,7 +11,7 @@ export default function Quiz2({ onCorrect, onClose }) {
   const [isSubmitHover, setIsSubmitHover] = useState(false);
   const [isCloseHover, setIsCloseHover] = useState(false);
 
-  const correctAnswer = "안시";
+  const correctAnswer = "이동";
 
   const handleSubmit = () => {
     if (answer.trim() === correctAnswer) {
@@ -50,7 +50,7 @@ export default function Quiz2({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">산정호수 안시</h2>
       <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "20px" }}>
-        "산정호수 __"에서 빈칸에 들어갈 단어를 적으세요.
+        "산정호수 안시"에 놀러와서 다같이 맛있게 먹을 수 있는 음식은 "00 숯불갈비"이다.
       </p>
       <input
         type="text"

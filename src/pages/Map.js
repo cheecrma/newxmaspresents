@@ -75,9 +75,9 @@ function Map() {
     window.Kakao.Link.sendDefault({
       objectType: "feed",
       content: {
-        title: "🎄 Merry Christmas!",
+        title: "Happy New Year!",
         description: "13개의 스테이지를 모두 클리어하세요!",
-        imageUrl: "https://your-image-url.com/map.png", // 공유할 이미지 URL
+        imageUrl: `/images/${selectedCharacter}.png`, // 공유할 이미지 URL
         link: {
           mobileWebUrl: "https://your-app-url.com",
           webUrl: "https://your-app-url.com",

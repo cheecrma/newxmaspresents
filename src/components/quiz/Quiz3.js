@@ -36,20 +36,20 @@ function Quiz3({ onCorrect, onClose }) {
       <div className="quiz-content">
         <h2 className="quiz-title">설악 쏘라노</h2>
         <p className="quiz-question">
-          설악 쏘라노에서 여름철 가족들에게 <br></br>인기 있는 시설은 무엇일까요?
+          설악 쏘라노에서 볼 수 있는 <br></br>멋진 자연경관은 무엇일까요?
         </p>
         <div className="quiz-options">
           <button onClick={handleWrongAnswer} className="quiz-button">
-            스키 슬로프
+            남산바위
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            PC 방
+            야바위
           </button>
           <button onClick={handleCorrectAnswer} className="quiz-button">
-            워터파크
+            울산바위
           </button>
           <button onClick={handleWrongAnswer} className="quiz-button">
-            아쿠아리움
+            설악바위
           </button>
         </div>
         <button onClick={onClose} className="close-button">

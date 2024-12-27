@@ -12,7 +12,7 @@ export default function Quiz4({ onCorrect, onClose }) {
   const [isCloseHover, setIsCloseHover] = useState(false);
 
   // 정답 설정
-  const correctAnswer = "조개구이";
+  const correctAnswer = "머드";
 
   const handleSubmit = () => {
     if (answer.trim() === correctAnswer) {
@@ -51,9 +51,9 @@ export default function Quiz4({ onCorrect, onClose }) {
     >
       <h2 className="quiz-title">대천 파로스</h2>
       <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "10px" }}>
-        "대천 파로스 근처에서 꼭 먹어야 하는 ____."
+        대천 파로스에서 즐길 수 있는 축제는? <br></br><br></br>"보령 00 축제"<br></br>
       </p>
-      <p
+      {/* <p
         style={{
           fontSize: "14px",
           marginBottom: "20px",
@@ -63,7 +63,7 @@ export default function Quiz4({ onCorrect, onClose }) {
         }}
       >
         힌트: 불 위에 구워 먹는 신선한 조개 요리
-      </p>
+      </p> */}
       <input
         type="text"
         value={answer}
