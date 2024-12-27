@@ -499,3 +499,19 @@
     transform: translateY(-10px); /* 약간 튀는 효과 */
   }
 }
+
+.kakao-share-button {
+  padding: 10px 20px;
+  background-color: #fee500;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.kakao-share-button:hover {
+  background-color: #f7d700;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import Confetti from "react-canvas-confetti";
@@ -61,6 +61,39 @@ const buttonPositions = [
 ];
 
 function Map() {
+  useEffect(() => {
+    // Kakao SDK 초기화
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init("e032b9ff6767e937469dda8e44bb72e2"); // Kakao JavaScript 키
+      console.log("Kakao initialized:", window.Kakao.isInitialized());
+    }
+  }, []);
+
+  const shareOnKakao = () => {
+    if (!window.Kakao.isInitialized()) return;
+
+    window.Kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "🎄 Merry Christmas!",
+        description: "13개의 스테이지를 모두 클리어하세요!",
+        imageUrl: "https://your-image-url.com/map.png", // 공유할 이미지 URL
+        link: {
+          mobileWebUrl: "https://your-app-url.com",
+          webUrl: "https://your-app-url.com",
+        },
+      },
+      buttons: [
+        {
+          title: "플레이하러 가기",
+          link: {
+            mobileWebUrl: "https://your-app-url.com",
+            webUrl: "https://your-app-url.com",
+          },
+        },
+      ],
+    });
+  };
   const location = useLocation();
   const { selectedCharacter, name } = location.state || {
     selectedCharacter: "defaultCharacter",
@@ -146,12 +179,6 @@ function Map() {
     } else {
       alert("증명서를 찾을 수 없습니다.");
     }
-  };
-
-  // 링크 복사
-  const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    alert("링크가 복사되었습니다!");
   };
 
   // 게임 재시작
@@ -253,8 +280,11 @@ function Map() {
 
           {/* 버튼 영역 */}
           <div className="completion-buttons">
-            <button onClick={captureMap}>증명서 저장하기</button>
-            <button onClick={copyLink}>링크 복사</button>
+            <button onClick={captureMap}>화면 저장</button>
+            {/* 카카오톡 공유 버튼 */}
+            <button onClick={shareOnKakao} className="kakao-share-button">
+              카카오톡 공유
+            </button>
             <button onClick={handleRestart}>처음으로 돌아가기</button>
           </div>
         </div>
