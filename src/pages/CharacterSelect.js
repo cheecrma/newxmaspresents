@@ -39,29 +39,34 @@ function CharacterSelect() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleStartAdventure();
+    }
+  };
+
   return (
     <div className="character-select-container">
       <h1 className="title">캐릭터를 선택하고 이름을 입력하세요 ❗</h1>
       <div className="character-list">
-        
         <div className="card-container">
           <CharacterCard
-          imageSrc="/images/character1.png"
-          name="캐릭터 1"
-          isSelected={selectedCharacter === "character1"}
-          onSelect={() => handleCharacterSelect("character1")}
+            imageSrc="/images/character1.png"
+            name="캐릭터 1"
+            isSelected={selectedCharacter === "character1"}
+            onSelect={() => handleCharacterSelect("character1")}
           />
         </div>
 
         <div>
           <CharacterCard
-          imageSrc="/images/character2.png"
-          name="캐릭터 2"
-          isSelected={selectedCharacter === "character2"}
-          onSelect={() => handleCharacterSelect("character2")}
+            imageSrc="/images/character2.png"
+            name="캐릭터 2"
+            isSelected={selectedCharacter === "character2"}
+            onSelect={() => handleCharacterSelect("character2")}
           />
         </div>
-        
+
         <div>
           <CharacterCard
             imageSrc="/images/character3.png"
@@ -73,13 +78,12 @@ function CharacterSelect() {
 
         <div>
           <CharacterCard
-          imageSrc="/images/character4.png"
-          name="캐릭터 4"
-          isSelected={selectedCharacter === "character4"}
-          onSelect={() => handleCharacterSelect("character4")}
+            imageSrc="/images/character4.png"
+            name="캐릭터 4"
+            isSelected={selectedCharacter === "character4"}
+            onSelect={() => handleCharacterSelect("character4")}
           />
         </div>
-
       </div>
 
       {/* 캐릭터 설명 표시 */}
@@ -95,6 +99,7 @@ function CharacterSelect() {
         value={name}
         onChange={handleNameChange}
         className="name-input"
+        onKeyDown={handleKeyDown}
       />
 
       <button className="start-button" onClick={handleStartAdventure}>

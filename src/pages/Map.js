@@ -130,14 +130,22 @@ function Map() {
     }
   };
 
-  // 화면 캡처
+  // 화면 캡처 (현재 화면과 동일하게 캡처)
   const captureMap = () => {
-    html2canvas(mapRef.current).then((canvas) => {
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png");
-      link.download = "adventure_certificate.png";
-      link.click();
-    });
+    const certificateElement = document.getElementById("certificate"); // 증명서 요소 선택
+    if (certificateElement) {
+      html2canvas(certificateElement, {
+        useCORS: true, // 크로스오리진 리소스 허용
+        scale: window.devicePixelRatio || 1, // 화면 해상도와 동일한 비율로 캡처
+      }).then((canvas) => {
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "adventure_certificate.png"; // 저장 파일명
+        link.click();
+      });
+    } else {
+      alert("증명서를 찾을 수 없습니다.");
+    }
   };
 
   // 링크 복사
@@ -226,16 +234,21 @@ function Map() {
         <div className="completion-container">
           {/* 증명서 영역 */}
           <div className="completion-certificate" id="certificate">
-            <h2>🎉 모험 완료 증명서 🎉</h2>
+            <h3 className="completion-title">
+              🏆 축하합니다! 모험을 완료했습니다 🏆
+            </h3>
             <img
               src={`/images/${selectedCharacter}.png`}
               alt="Character"
               className="certificate-image"
             />
             <p className="certificate-message">
-              {characterMessages[selectedCharacter]}
+              "{name}" 님, {characterMessages[selectedCharacter]}
             </p>
-            <p className="certificate-name">{name}</p>
+            <p className="completion-subtext">
+              여러분의 노력으로 모든 도전을 성공적으로 완료했습니다. <br />
+              함께 해주셔서 감사드리며, 새로운 모험을 기대합니다!
+            </p>
           </div>
 
           {/* 버튼 영역 */}
