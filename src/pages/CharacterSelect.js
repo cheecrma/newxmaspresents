@@ -64,7 +64,6 @@ function CharacterSelect() {
     }
   };
 
-  console.log("select", selectedCharacter);
   return (
     <div className="character-select-container">
       <h1 className="title">캐릭터를 선택하고 이름을 입력하세요 ❗</h1>

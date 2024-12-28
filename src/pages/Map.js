@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
-import Confetti from "react-canvas-confetti";
 import StageButton from "../components/StageButton";
 import Quiz1 from "../components/quiz/Quiz1";
 import Quiz2 from "../components/quiz/Quiz2";
@@ -76,7 +75,7 @@ function Map() {
       objectType: "feed",
       content: {
         title: `☃️${name}님의 초대장☃️`, // 닉네임 포함
-        description: "호앤리 모험에 같이 참여하세요!",
+        description: "신비한 호앤리 옷장 모험에 같이 참여해요!",
         imageUrl: `https://hnrgift.shop/images/character/${selectedCharacter}.jpg`, // 이미지 경로
         link: {
           mobileWebUrl: "https://hnrgift.shop",
@@ -85,7 +84,7 @@ function Map() {
       },
       buttons: [
         {
-          title: "플레이하러 가기",
+          title: "플레이하러가기🖤 ",
           link: {
             mobileWebUrl: "https://hnrgift.shop",
             webUrl: "https://hnrgift.shop",
@@ -101,45 +100,10 @@ function Map() {
   };
   const [clearedStages, setClearedStages] = useState(Array(13).fill(false));
   const [currentQuiz, setCurrentQuiz] = useState(null); // 현재 퀴즈 상태
-  const [showCompletion, setShowCompletion] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const mapRef = useRef(null);
-  const confettiInstance = useRef(null);
+  const [showCompletion, setShowCompletion] = useState(false);
   const navigate = useNavigate();
-
-  const getInstance = (instance) => {
-    confettiInstance.current = instance;
-  };
-
-  // 컨페티 애니메이션
-  const fireConfetti = () => {
-    const duration = 5 * 1000; // 5초
-    const end = Date.now() + duration;
-
-    const frame = () => {
-      confettiInstance.current &&
-        confettiInstance.current({
-          particleCount: 2,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-        });
-
-      confettiInstance.current &&
-        confettiInstance.current({
-          particleCount: 2,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-        });
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    };
-
-    frame();
-  };
 
   // 스테이지 클릭 시 퀴즈 열기
   const handleStageClick = (index) => {
@@ -159,7 +123,6 @@ function Map() {
     setCurrentQuiz(null);
     if (newClearedStages.every((stage) => stage)) {
       setShowCompletion(true);
-      fireConfetti();
     }
   };
 
@@ -200,7 +163,6 @@ function Map() {
     navigate("/");
   };
 
-  console.log("map", selectedCharacter);
   return (
     <div
       ref={mapRef}
@@ -212,7 +174,6 @@ function Map() {
         backgroundSize: "cover",
       }}
     >
-      <Confetti refConfetti={getInstance} />
       <header className="map-header">
         <div className="character-info">
           <img
