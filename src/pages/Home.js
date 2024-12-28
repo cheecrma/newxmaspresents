@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database, ref, onValue } from "../firebase";
 import Wardrobe from "../components/Wardrobe";
 import "./Home.css";
+import Snowfall from "../components/Snowfall";
 
 function Home() {
   const [participantCount, setParticipantCount] = useState(0);
@@ -16,6 +17,7 @@ function Home() {
   }, []);
   return (
     <div style={styles.container}>
+      <Snowfall />
       <h1 style={styles.title}>
         <span className="title_highlight" style={styles.title_highlight}>
           신비한 호앤리 옷장{" "}

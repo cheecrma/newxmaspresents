@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Snowfall from "../components/Snowfall";
 
 function Instructions() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Instructions() {
 
   return (
     <div style={styles.container}>
+      <Snowfall />
       <div style={styles.card}>
         <h1 style={styles.title}>
           신비한 '호앤리 옷장'에 <br />
