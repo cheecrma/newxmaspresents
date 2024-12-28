@@ -1,34 +1,64 @@
-// src/components/quiz/Quiz12.js
-
 "use client";
 
 import { useState } from "react";
+import Swal from "sweetalert2";
 import "./Quiz.css";
 
 export default function Quiz12({ onCorrect, onClose }) {
   const [answer, setAnswer] = useState("");
-  const [feedback, setFeedback] = useState(null);
   const [isSubmitHover, setIsSubmitHover] = useState(false);
   const [isCloseHover, setIsCloseHover] = useState(false);
-
-
-  // 정답 설정
   const correctAnswer = "뮤직룸";
 
-  const handleSubmit = () => {
-    if (answer.trim() === correctAnswer) {
-      setFeedback(true);
-      setTimeout(() => {
-        onCorrect();
-      }, 100); // 0.1초 후에 다음 단계로 진행
+  const swalButton = Swal.mixin({
+    customClass: {
+      popup: "popup", // 전체
+      confirmButton: "confirmButton", // 확인 버튼
+      title: "title", // 타이틀
+      htmlContainer: "htmlContainer", // 내용
+      icon: "swalicon", // 아이콘 스타일
+    },
+    buttonsStyling: false, // 버튼 스타일링 사용 안 함
+  });
+
+  const showPopup = (isCorrect) => {
+    if (isCorrect) {
+      swalButton
+        .fire({
+          icon: "success",
+          html: `
+          정답입니다! 🎉 
+          훌륭해요! 다음으로 넘어가세요. 
+          `,
+          confirmButtonText: "확인",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            // 확인 버튼을 누른 경우에만 실행
+            onCorrect();
+          }
+        });
     } else {
-      setFeedback(false);
+      swalButton.fire({
+        icon: "error",
+        html: `
+        틀렸습니다 😥 
+        다시 시도해보세요! 
+        `,
+        confirmButtonText: "확인",
+      });
     }
+  };
+
+  const handleSubmit = () => {
+    const isCorrect = answer.trim() === correctAnswer;
+    showPopup(isCorrect);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleSubmit();
+      e.preventDefault(); // 기본 동작 방지
+      handleSubmit(); // 제출 로직 호출
     }
   };
 
@@ -51,10 +81,15 @@ export default function Quiz12({ onCorrect, onClose }) {
       }}
     >
       <h2 className="quiz-title">해운대</h2>
-      <p style={{ fontFamily: "LeeSeoyun", fontSize: "18px", marginBottom: "10px" }}>
+      <p
+        style={{
+          fontFamily: "LeeSeoyun",
+          fontSize: "18px",
+          marginBottom: "10px",
+        }}
+      >
         한화리조트 해운대에 있는 Instagrammable한 테마 객실 이름은?? (3글자)
       </p>
-
       <input
         type="text"
         value={answer}
@@ -71,61 +106,51 @@ export default function Quiz12({ onCorrect, onClose }) {
           fontFamily: "LeeSeoyun",
         }}
       />
-     {feedback !== null && (
-        <p
-          style={{
-            fontSize: "16px",
-            marginTop: "10px",
-            fontFamily: "LeeSeoyun",
-            color: feedback ? "green" : "rgb(190, 63, 0)",
-          }}
-        >
-          {feedback ? "정답입니다!" : "틀렸습니다. 다시 시도해 보세요."}
-        </p>
-      )}
-      <div style={{
+      <div
+        style={{
           display: "flex",
           flexDirection: "row", // 버튼을 가로로 정렬
           gap: "10px", // 버튼 간격
           marginTop: "10px",
-        }}>
+        }}
+      >
         <button
-       style={{
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontSize: "16px",
-        fontFamily: "LeeSeoyun",
-        transition: "background-color 0.3s ease",
-        backgroundColor: isSubmitHover ? "#7d5a50" : "#5a3e36",
-        color: "white",
-      }}
-      onMouseEnter={() => setIsSubmitHover(true)}
-      onMouseLeave={() => setIsSubmitHover(false)}
-      onClick={handleSubmit}
-      >
-        제출
-      </button>
-      <button
-       style={{
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontSize: "16px",
-        fontFamily: "LeeSeoyun",
-        transition: "background-color 0.3s ease",
-        backgroundColor: isCloseHover ? "#cccccc" : "#e5e5e5",
-        color: "#4a4a4a",
-      }}
-      onMouseEnter={() => setIsCloseHover(true)}
-      onMouseLeave={() => setIsCloseHover(false)}
-      onClick={onClose}
-      >
-        닫기
-      </button>
-      </div> 
+          style={{
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontFamily: "LeeSeoyun",
+            transition: "background-color 0.3s ease",
+            backgroundColor: isSubmitHover ? "#7d5a50" : "#5a3e36",
+            color: "white",
+          }}
+          onMouseEnter={() => setIsSubmitHover(true)}
+          onMouseLeave={() => setIsSubmitHover(false)}
+          onClick={handleSubmit}
+        >
+          제출
+        </button>
+        <button
+          style={{
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontFamily: "LeeSeoyun",
+            transition: "background-color 0.3s ease",
+            backgroundColor: isCloseHover ? "#cccccc" : "#e5e5e5",
+            color: "#4a4a4a",
+          }}
+          onMouseEnter={() => setIsCloseHover(true)}
+          onMouseLeave={() => setIsCloseHover(false)}
+          onClick={onClose}
+        >
+          닫기
+        </button>
+      </div>
     </div>
   );
 }

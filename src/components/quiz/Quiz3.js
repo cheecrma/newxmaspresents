@@ -3,21 +3,31 @@ import "./Quiz.css";
 import Swal from "sweetalert2";
 
 function Quiz3({ onCorrect, onClose }) {
-  const handleCorrectAnswer = () => {
-    onCorrect(); // 정답 처리 후 바로 화면 닫기
-  };
-
   const swalButton = Swal.mixin({
     customClass: {
       popup: "popup", // 전체
       confirmButton: "confirmButton", // 확인
       title: "title", // 타이틀
       htmlContainer: "htmlContainer", // 내용
-      icon: "swalicon"
+      icon: "swalicon",
     },
     buttonsStyling: false,
   });
 
+  const handleCorrectAnswer = () => {
+    swalButton
+      .fire({
+        icon: "success",
+        html: `
+        정답입니다! 🎉 
+        훌륭해요! 다음으로 넘어가세요. 
+        `,
+        confirmButtonText: "확인",
+      })
+      .then(() => {
+        onCorrect(); // 정답 처리 후 실행
+      });
+  };
 
   const handleWrongAnswer = () => {
     swalButton.fire({
@@ -28,7 +38,7 @@ function Quiz3({ onCorrect, onClose }) {
       `,
       showCancelButton: false,
       confirmButtonText: "확인",
-  })
+    });
   };
 
   return (

@@ -1,19 +1,56 @@
-// src/components/quiz/Quiz9.js
-
 "use client";
 
 import { useState } from "react";
+import Swal from "sweetalert2";
 import "./Quiz.css";
 
-export default function Quiz9({ onCorrect, onClose }) {
+export default function Quiz13({ onCorrect, onClose }) {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [feedback, setFeedback] = useState(null);
   const [isSubmitHover, setIsSubmitHover] = useState(false);
   const [isCloseHover, setIsCloseHover] = useState(false);
 
-  // 정답 목록
   const correctAnswers = ["테마파크", "루지"];
   const options = ["테마파크", "루지", "야구장", "광안리"];
+
+  const swalButton = Swal.mixin({
+    customClass: {
+      popup: "popup", // 전체
+      confirmButton: "confirmButton", // 확인 버튼
+      title: "title", // 타이틀
+      htmlContainer: "htmlContainer", // 내용
+      icon: "swalicon", // 아이콘 스타일
+    },
+    buttonsStyling: false, // 버튼 스타일링 사용 안 함
+  });
+
+  const showPopup = (isCorrect) => {
+    if (isCorrect) {
+      swalButton
+        .fire({
+          icon: "success",
+          html: `
+          정답입니다! 🎉 
+          훌륭해요! 다음으로 넘어가세요. 
+          `,
+          confirmButtonText: "확인",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            // 확인 버튼을 누른 경우에만 실행
+            onCorrect();
+          }
+        });
+    } else {
+      swalButton.fire({
+        icon: "error",
+        html: `
+        틀렸습니다 😥 
+        다시 시도해보세요! 
+        `,
+        confirmButtonText: "확인",
+      });
+    }
+  };
 
   const handleOptionClick = (option) => {
     // 선택한 옵션 추가/제거
@@ -31,12 +68,7 @@ export default function Quiz9({ onCorrect, onClose }) {
       correctAnswers.length === selectedAnswers.length &&
       correctAnswers.every((answer) => selectedAnswers.includes(answer));
 
-    setFeedback(isCorrect);
-    if (isCorrect) {
-      setTimeout(() => {
-        onCorrect();
-      }, 100); // 0.1초 후에 다음 단계로 진행
-    }
+    showPopup(isCorrect);
   };
 
   return (
@@ -58,13 +90,20 @@ export default function Quiz9({ onCorrect, onClose }) {
       }}
     >
       <h2 className="quiz-title">마티에 오시리아</h2>
-      <p style={{ fontFamily: "LeeSeoyun",fontSize: "18px", marginBottom: "20px" }}>
-        "마티에 오시리아" 근처 3km 이내에서 <br></br> 즐길 수 있는 것을 모두 고르세요.
+      <p
+        style={{
+          fontFamily: "LeeSeoyun",
+          fontSize: "18px",
+          marginBottom: "20px",
+        }}
+      >
+        "마티에 오시리아" 근처 3km 이내에서 <br /> 즐길 수 있는 것을 모두
+        고르세요.
       </p>
       <div
         style={{
           display: "flex",
-          flexWrap: "wrap", 
+          flexWrap: "wrap",
           gap: "10px",
           marginBottom: "20px",
           fontFamily: "LeeSeoyun",
@@ -94,61 +133,51 @@ export default function Quiz9({ onCorrect, onClose }) {
           </button>
         ))}
       </div>
-      {feedback !== null && (
-        <p
-          style={{
-            fontSize: "16px",
-            marginTop: "10px",
-            fontFamily: "LeeSeoyun",
-            color: feedback ? "green" : "rgb(190, 63, 0)",
-          }}
-        >
-          {feedback ? "정답입니다!" : "틀렸습니다. 다시 시도해 보세요."}
-        </p>
-      )}
-      <div style={{
+      <div
+        style={{
           display: "flex",
           flexDirection: "row", // 버튼을 가로로 정렬
           gap: "10px", // 버튼 간격
           marginTop: "10px",
-        }}>
+        }}
+      >
         <button
-       style={{
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontSize: "16px",
-        fontFamily: "LeeSeoyun",
-        transition: "background-color 0.3s ease",
-        backgroundColor: isSubmitHover ? "#7d5a50" : "#5a3e36",
-        color: "white",
-      }}
-      onMouseEnter={() => setIsSubmitHover(true)}
-      onMouseLeave={() => setIsSubmitHover(false)}
-      onClick={handleSubmit}
-      >
-        제출
-      </button>
-      <button
-       style={{
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontSize: "16px",
-        fontFamily: "LeeSeoyun",
-        transition: "background-color 0.3s ease",
-        backgroundColor: isCloseHover ? "#cccccc" : "#e5e5e5",
-        color: "#4a4a4a",
-      }}
-      onMouseEnter={() => setIsCloseHover(true)}
-      onMouseLeave={() => setIsCloseHover(false)}
-      onClick={onClose}
-      >
-        닫기
-      </button>
-      </div> 
+          style={{
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontFamily: "LeeSeoyun",
+            transition: "background-color 0.3s ease",
+            backgroundColor: isSubmitHover ? "#7d5a50" : "#5a3e36",
+            color: "white",
+          }}
+          onMouseEnter={() => setIsSubmitHover(true)}
+          onMouseLeave={() => setIsSubmitHover(false)}
+          onClick={handleSubmit}
+        >
+          제출
+        </button>
+        <button
+          style={{
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontFamily: "LeeSeoyun",
+            transition: "background-color 0.3s ease",
+            backgroundColor: isCloseHover ? "#cccccc" : "#e5e5e5",
+            color: "#4a4a4a",
+          }}
+          onMouseEnter={() => setIsCloseHover(true)}
+          onMouseLeave={() => setIsCloseHover(false)}
+          onClick={onClose}
+        >
+          닫기
+        </button>
+      </div>
     </div>
   );
 }

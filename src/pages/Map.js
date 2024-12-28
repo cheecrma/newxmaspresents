@@ -77,18 +77,18 @@ function Map() {
       content: {
         title: `☃️${name}님의 초대장☃️`, // 닉네임 포함
         description: "호앤리 모험에 같이 참여하세요!",
-        imageUrl: `https://newxmaspresents.netlify.app/images/character/${selectedCharacter}.jpg`, // 이미지 경로
+        imageUrl: `https://hnrgift.shop/images/character/${selectedCharacter}.jpg`, // 이미지 경로
         link: {
-          mobileWebUrl: "https://newxmaspresents.netlify.app",
-          webUrl: "https://newxmaspresents.netlify.app",
+          mobileWebUrl: "https://hnrgift.shop",
+          webUrl: "https://hnrgift.shop",
         },
       },
       buttons: [
         {
           title: "플레이하러 가기",
           link: {
-            mobileWebUrl: "https://newxmaspresents.netlify.app",
-            webUrl: "https://newxmaspresents.netlify.app",
+            mobileWebUrl: "https://hnrgift.shop",
+            webUrl: "https://hnrgift.shop",
           },
         },
       ],
