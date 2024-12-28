@@ -163,21 +163,35 @@ function Map() {
     }
   };
 
-  // 화면 캡처 (현재 화면과 동일하게 캡처)
   const captureMap = () => {
-    const certificateElement = document.getElementById("certificate"); // 증명서 요소 선택
+    const certificateElement = document.querySelector(
+      ".completion-certificate"
+    ); // 특정 요소 선택
+
     if (certificateElement) {
       html2canvas(certificateElement, {
-        useCORS: true, // 크로스오리진 리소스 허용
-        scale: window.devicePixelRatio || 1, // 화면 해상도와 동일한 비율로 캡처
+        useCORS: true, // 외부 리소스 허용
+        scale: 2,
+        onclone: (clonedDoc) => {
+          // Map.css의 폰트를 클론된 DOM에 강제로 추가
+          const style = document.createElement("style");
+          style.textContent = `
+            @import url("https://fonts.googleapis.com/css2?family=LeeSeoyun&display=swap");
+            
+            .completion-certificate {
+              font-family: "LeeSeoyun", sans-serif;
+            }
+          `;
+          clonedDoc.head.appendChild(style);
+        },
       }).then((canvas) => {
         const link = document.createElement("a");
         link.href = canvas.toDataURL("image/png");
-        link.download = "adventure_certificate.png"; // 저장 파일명
+        link.download = "completion-certificate.png";
         link.click();
       });
     } else {
-      alert("증명서를 찾을 수 없습니다.");
+      alert("캡처할 요소를 찾을 수 없습니다.");
     }
   };
 
@@ -276,18 +290,22 @@ function Map() {
             </p>
             <p className="completion-subtext">
               여러분의 노력으로 모든 도전을 성공적으로 완료했습니다. <br />
-              함께 해주셔서 감사드리며, 새로운 모험을 기대합니다!
+              함께 해주셔서 감사드리며, 새로운 모험을 기대합니다! <br />
             </p>
           </div>
 
           {/* 버튼 영역 */}
           <div className="completion-buttons">
-            <button onClick={captureMap}>화면 저장</button>
+            <button onClick={captureMap} className="capture-button">
+              화면 저장하기
+            </button>
             {/* 카카오톡 공유 버튼 */}
             <button onClick={shareOnKakao} className="kakao-share-button">
-              카카오톡 공유
+              카카오톡 공유하기
             </button>
-            <button onClick={handleRestart}>처음으로 돌아가기</button>
+            <button onClick={handleRestart} className="replay-button">
+              처음으로 돌아가기
+            </button>
           </div>
         </div>
       )}
