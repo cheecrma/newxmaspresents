@@ -20,10 +20,10 @@ import "./Map.css";
 
 // 축하 메시지 객체
 const characterMessages = {
-  character1: "활발한 모험가여, 끝까지 완주한 당신을 축하합니다!",
-  character2: "차분한 전략가여, 지혜롭게 모든 도전을 이겨냈군요!",
-  character3: "호기심 많은 탐험가여, 새로운 세계를 밝혀냈습니다!",
-  character4: "따뜻한 힐러여, 모두를 위해 헌신한 당신을 축복합니다!",
+  rabbit: "언제나 웃으며 손님의 마음까지 헤아리는 배려의",
+  bear: "믿음직한 한마디로 고객의 신뢰를 사로잡는 설득의",
+  cat: "조용히 문제를 해결하며 팀의 뒤를 든든히 받쳐주는",
+  dog: "빠른 발걸음과 열정으로 현장을 누비는",
 };
 
 // 퀴즈 컴포넌트 배열
@@ -75,20 +75,20 @@ function Map() {
     window.Kakao.Link.sendDefault({
       objectType: "feed",
       content: {
-        title: "Happy New Year!",
-        description: "13개의 스테이지를 모두 클리어하세요!",
-        imageUrl: `/images/character/${selectedCharacter}.jpg`, // 공유할 이미지 URL
+        title: `☃️${name}님의 초대장☃️`, // 닉네임 포함
+        description: "호앤리 모험에 같이 참여하세요!",
+        imageUrl: `https://newxmaspresents.netlify.app/images/character/${selectedCharacter}.jpg`, // 이미지 경로
         link: {
-          mobileWebUrl: "https://your-app-url.com",
-          webUrl: "https://your-app-url.com",
+          mobileWebUrl: "https://newxmaspresents.netlify.app",
+          webUrl: "https://newxmaspresents.netlify.app",
         },
       },
       buttons: [
         {
           title: "플레이하러 가기",
           link: {
-            mobileWebUrl: "https://your-app-url.com",
-            webUrl: "https://your-app-url.com",
+            mobileWebUrl: "https://newxmaspresents.netlify.app",
+            webUrl: "https://newxmaspresents.netlify.app",
           },
         },
       ],
@@ -186,7 +186,7 @@ function Map() {
     navigate("/");
   };
 
-  console.log("map", selectedCharacter)
+  console.log("map", selectedCharacter);
   return (
     <div
       ref={mapRef}
@@ -266,12 +266,13 @@ function Map() {
               🏆 축하합니다! 모험을 완료했습니다 🏆
             </h3>
             <img
-              src={`/images/${selectedCharacter}.png`}
+              src={`/images/character/${selectedCharacter}.jpg`}
               alt="Character"
               className="certificate-image"
             />
             <p className="certificate-message">
-              "{name}" 님, {characterMessages[selectedCharacter]}
+              {characterMessages[selectedCharacter]},
+              <span className="certificate-name">"{name}" 님</span>
             </p>
             <p className="completion-subtext">
               여러분의 노력으로 모든 도전을 성공적으로 완료했습니다. <br />

@@ -11,10 +11,10 @@ function CharacterSelect() {
 
   // 캐릭터별 설명
   const characterDescriptions = {
-    character1: "활발하고 에너지가 넘치는 모험가입니다.",
-    character2: "차분하고 분석적인 전략가입니다.",
-    character3: "창의적이고 호기심 많은 탐험가입니다.",
-    character4: "친절하고 배려심 깊은 힐러입니다.",
+    rabbit: "언제나 웃으며 손님의 마음까지 헤아리는 배려의 달인.",
+    bear: "믿음직한 한마디로 고객의 신뢰를 사로잡는 설득의 전문가.",
+    cat: "조용히 문제를 해결하며 팀의 뒤를 든든히 받쳐주는 묵묵한 헌신가.",
+    dog: "빠른 발걸음과 열정으로 현장을 누비는 해결사.",
   };
 
   // 캐릭터 선택 핸들러
@@ -63,8 +63,8 @@ function CharacterSelect() {
       handleStartAdventure();
     }
   };
-  
-  console.log("select",selectedCharacter)
+
+  console.log("select", selectedCharacter);
   return (
     <div className="character-select-container">
       <h1 className="title">캐릭터를 선택하고 이름을 입력하세요 ❗</h1>

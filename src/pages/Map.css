@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   /* gap: 10px; */
-  margin-left: 20px;
+  margin-left: 10px;
   /* margin-left: 40px; */
 }
 
@@ -263,6 +263,13 @@
 .certificate-message {
   font-size: 1.2rem;
   color: #5a3e36;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.certificate-name {
+  font-size: 1.2rem;
+  color: black;
   margin-bottom: 15px;
   line-height: 1.5;
 }
