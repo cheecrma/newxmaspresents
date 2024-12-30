@@ -6,7 +6,7 @@ import PresentAnimation from "./components/PresentAnimation";
 import Instructions from "./pages/Instructions";
 import CharacterSelect from "./pages/CharacterSelect";
 import Map from "./pages/Map";
-import Test from "./pages/Test";
+// import Test from "./pages/Test";
 import Error from "./pages/Error";
 import "./App.css";
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="/character-select" element={<CharacterSelect />} />
           <Route path="/map" element={<Map />} />
           <Route path="*" element={<Error />} />
-          <Route path="/test" element={<Test />} />
+          {/* <Route path="/test" element={<Test />} /> */}
         </Routes>
       ) : (
         <LoadingScreen onLoadComplete={handleLoadComplete} />
