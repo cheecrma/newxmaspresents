@@ -261,13 +261,12 @@
 
 /* 팝업 이미지 (캐릭터) */
 .certificate-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 15px auto;
-  border: 4px solid #7d5a50;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 입체감 */
-  animation: bounce 1s ease-in-out infinite; /* 살짝 튀는 애니메이션 */
+  position: absolute;
+  bottom: -80px;
+  left: -50px;
+  width: 230px;
+  height: auto;
+  z-index: 11; /* 삼각형 위에 배치 */
 }
 
 /* 메시지 */
@@ -281,16 +280,17 @@
 .certificate-name {
   font-size: 1.2rem;
   color: black;
-  margin-bottom: 15px;
-  line-height: 1.5;
+  font-family: 'Hahmlet-Regular'; /* 상장 느낌의 폰트 */
+  font-weight: 700;
+  margin-top: 0;
 }
 
-.completion-subtext {
+.completion-subtext p{
   font-size: 1rem;
   color: black;
-  margin: 10px 0;
-  font-family: "LeeSeoyun"; /* 부드러운 서브텍스트 */
-  line-height: 1.2;
+  font-family: "LeeSeoyun";
+  line-height: 1.5;
+  margin-left: 30%;
 }
 
 /* 버튼 및 배경 애니메이션 컨테이너 */
@@ -359,6 +359,7 @@
 @media (max-width: 768px) {
   .completion-certificate {
     padding: 20px;
+    width: 95%;
     max-width: 350px;
   }
   .map-header {
@@ -366,11 +367,20 @@
   }
 
   .certificate-image {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    bottom: -50px;
+    left: -10px;
   }
 
   .certificate-message {
+    font-size: 1.3rem;
+  }
+
+  .completion-subtext {
+    font-size: 0.9rem;
+  }
+
+  .completion-title {
     font-size: 1.3rem;
   }
 
@@ -435,10 +445,13 @@
     padding: 10px;
     max-width: 280px;
   }
+
   .completion-certificate {
-    padding: 10px;
-    max-width: 280px;
+    padding: 15px;
+    width: 90%;
+    max-width: 300px;
   }
+
   .completion-buttons {
     width: 300px;
   }
@@ -448,9 +461,18 @@
     padding: 8px;
   }
 
-  .certificate-image {
-    width: 70px;
-    height: 70px;
+   .certificate-image {
+    width: 170px;
+    bottom: -50px;
+    left: -20px;
+  }
+
+  .completion-title {
+    font-size: 1.2rem;
+  }
+
+  .completion-subtext {
+    font-size: 0.8rem;
   }
 
   .certificate-message {
@@ -470,42 +492,72 @@
 
 /* 완료 화면 컨테이너 */
 .completion-container {
+  position: fixed; /* 화면에 고정 */
+  top: 50%; /* 수직 중앙 정렬 */
+  left: 50%; /* 수평 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 중앙으로 이동 */
   display: flex;
-  flex-direction: column; /* 세로 방향 정렬 */
+  flex-direction: column;
   align-items: center;
-  z-index: 10;
+  justify-content: center;
+  z-index: 100; /* map 위로 올리기 위해 높은 z-index 설정 */
+  width: 100%; /* 부모 컨테이너 너비에 맞춤 */
+  max-width: 500px; /* 최대 너비 제한 */
+  padding: 20px;
+  box-sizing: border-box; /* 여백과 패딩 포함하여 크기 계산 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 추가 (선택 사항) */
+  border-radius: 15px; /* 컨테이너 둥글게 */
+  backdrop-filter: blur(5px); /* 배경 블러 효과 */
 }
 
 /* 완료 증명서 스타일 */
 .completion-certificate {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   background-color: #fdfdf0; /* 밝고 고급스러운 배경색 */
   padding: 30px;
-  border-radius: 15px; /* 둥근 모서리 */
+  border-radius: 15px;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 입체감 있는 그림자 */
-  z-index: 100; 
-  width: 500px; /* 적절한 너비 */
-  max-width: 90%;
-  height: 300px;
-  max-height: 50%;
+  z-index: 101; /* 배경 위에 표시 */
+  width: 90%; /* 작은 화면에서 너비 조정 */
+  max-width: 500px; /* 큰 화면에서 최대 너비 */
+  height: auto; /* 높이를 내용에 따라 자동 조정 */
   border: 6px solid #d4af37; /* 금색 테두리 */
-  font-family: "LeeSeoyun", sans-serif; /* 상장 느낌의 글꼴 */
+  font-family: "LeeSeoyun", sans-serif;
 }
 
 .completion-title {
-  font-family: 'Hahmlet-Regular';
+  font-family: "Hahmlet-Regular";
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin: 10px 0;
 }
+
+.certificate-details {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 공간 균등 분배 */
+  gap: 10px; /* 이미지와 텍스트 사이 간격 */
+  margin: 20px 0;
+}
+
 
 .completion-certificate .certificate-footer {
   font-size: 0.9rem;
   color: #777;
   margin-top: 20px;
+}
+
+.triangle-ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 150px 150px 0;
+  border-color: transparent transparent #ff6f61 transparent;
+  z-index: 10;
 }
 
 /* 버튼 수정  */
@@ -514,6 +566,10 @@
   justify-content: center;
   gap: 10px;
   margin-top: 20px;
+}
+
+.completion-buttons{
+  margin-top: 10%;
 }
 
 /* 버튼 영역 */
