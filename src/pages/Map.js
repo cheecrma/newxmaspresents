@@ -235,25 +235,30 @@ function Map() {
       {/* 완료 화면 */}
       {showCompletion && (
         <div className="completion-container">
-          {/* 증명서 영역 */}
-          <div className="completion-certificate" id="certificate">
-            <h3 className="completion-title">
-              🏆 축하합니다! 모험을 완료했습니다 🏆
-            </h3>
-            <img
-              src={`/images/character/${selectedCharacter}.jpg`}
+        {/* 증명서 영역 */}
+        <div className="completion-certificate" id="certificate">
+        <div className="triangle-ribbon"></div> 
+          <img
+              src={`/images/completion_img/${selectedCharacter}.png`}
               alt="Character"
               className="certificate-image"
             />
-            <p className="certificate-message">
-              {characterMessages[selectedCharacter]},
-              <span className="certificate-name">"{name}" 님</span>
-            </p>
-            <p className="completion-subtext">
-              여러분의 노력으로 모든 도전을 성공적으로 완료했습니다. <br />
-              함께 해주셔서 감사드리며, 새로운 모험을 기대합니다! <br />
+          <h3 className="completion-title">
+            모험 완료 증명서
+          </h3>
+          <div class="certificate-details">
+            <div>
+            <p className="completion-subtext">{characterMessages[selectedCharacter]},</p> 
+            <p className="certificate-name">{name} <span>모험가님</span></p>
+            </div> 
+          </div>
+          <div className="completion-subtext">
+            <p>
+              여러분의 노력으로 모든 도전을 <br></br>성공적으로 완료했습니다. <br />
+              2024 한 해 너무 고생많으셨으며, <br></br> 새로운 모험을 기대합니다! <br />
             </p>
           </div>
+        </div>
 
           {/* 버튼 영역 */}
           <div className="completion-buttons">

@@ -6,7 +6,7 @@ import PresentAnimation from "./components/PresentAnimation";
 import Instructions from "./pages/Instructions";
 import CharacterSelect from "./pages/CharacterSelect";
 import Map from "./pages/Map";
-import Test from "./pages/Test"
+import Test from "./pages/Test";
 import Error from "./pages/Error";
 import "./App.css";
 
