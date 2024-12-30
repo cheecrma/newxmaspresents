@@ -262,9 +262,9 @@
 /* 팝업 이미지 (캐릭터) */
 .certificate-image {
   position: absolute;
-  bottom: -80px;
-  left: -50px;
-  width: 230px;
+  bottom: -60px;
+  left: -30px;
+  width: 200px;
   height: auto;
   z-index: 11; /* 삼각형 위에 배치 */
 }
@@ -286,11 +286,12 @@
 }
 
 .completion-subtext p{
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: black;
   font-family: "LeeSeoyun";
   line-height: 1.5;
   margin-left: 30%;
+  word-wrap: break-word;
 }
 
 /* 버튼 및 배경 애니메이션 컨테이너 */
@@ -453,11 +454,11 @@
   }
 
   .completion-buttons {
-    width: 300px;
+    width: 400px;
   }
 
   .completion-buttons button {
-    font-size: 12px;
+    font-size: 10px;
     padding: 8px;
   }
 
@@ -563,13 +564,16 @@
 /* 버튼 수정  */
 .completion-certificate .certificate-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
   margin-top: 20px;
 }
 
 .completion-buttons{
   margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 버튼 영역 */
@@ -603,13 +607,12 @@
 }
 /* 버튼 공통 스타일 */
 .completion-buttons button {
-  width: 130px; /* 버튼이 부모 컨테이너의 너비에 맞게 확장 */
+  width: 115px; /* 버튼이 부모 컨테이너의 너비에 맞게 확장 */
   max-width: 320px; /* 버튼의 최대 너비 제한 */
-  margin: 0px auto; /* 버튼 간격 및 중앙 정렬 */
   padding: 20px;
   font-size: 13px;
   font-family: "LeeSeoyun";
-  font-weight: bold;
+  /* font-weight: bold; */
   border: black wheat solid;
   border-radius: 8px;
   cursor: pointer;

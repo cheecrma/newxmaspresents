@@ -244,7 +244,7 @@ function Map() {
               className="certificate-image"
             />
           <h3 className="completion-title">
-            모험 완료 증명서
+            모험 완료 증명서 🏆
           </h3>
           <div class="certificate-details">
             <div>
@@ -254,8 +254,10 @@ function Map() {
           </div>
           <div className="completion-subtext">
             <p>
-              여러분의 노력으로 모든 도전을 <br></br>성공적으로 완료했습니다. <br />
-              2024 한 해 너무 고생많으셨으며, <br></br> 새로운 모험을 기대합니다! <br />
+              모든 도전을 성공적으로 완료하셨습니다! <br />
+              2024 한 해 정말 고생 많으셨습니다. <br /> 
+              다가올 2025, 새로운 모험도 <br /> 멋지게 펼치시길 
+              응원합니다! 💪
             </p>
           </div>
         </div>
@@ -267,10 +269,10 @@ function Map() {
             </button>
             {/* 카카오톡 공유 버튼 */}
             <button onClick={shareOnKakao} className="kakao-share-button">
-              카카오톡 공유하기
+              카카오톡 공유
             </button>
             <button onClick={handleRestart} className="replay-button">
-              처음으로 돌아가기
+              처음으로 
             </button>
           </div>
         </div>

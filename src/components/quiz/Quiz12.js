@@ -43,8 +43,8 @@ export default function Quiz12({ onCorrect, onClose }) {
         icon: "error",
         html: `
         틀렸습니다 😥 
-        다시 시도해보세요! 
-        `,
+        다시 시도해보세요!
+        << 힌트 : 음악 🎷 >> `,
         confirmButtonText: "확인",
       });
     }
@@ -88,7 +88,7 @@ export default function Quiz12({ onCorrect, onClose }) {
           marginBottom: "10px",
         }}
       >
-        한화리조트 해운대에 있는 Instagrammable한 테마 객실 이름은?? (3글자)
+        한화리조트 해운대에 있는 테마 객실 이름은?? (3글자)
       </p>
       <input
         type="text"

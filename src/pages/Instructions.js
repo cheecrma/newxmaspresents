@@ -19,16 +19,15 @@ function Instructions() {
           오신 것을 환영합니다!
         </h1>
         <p style={styles.description}>
-          2024 한 해 수고하신 H&R 가족들을 위해 <br />
+          2024 한 해 수고하신 <br /> H&R 가족들을 위해 <br />
           준비한 작은 즐거움입니다.
           <br />
           가볍게 즐기며 소소한 재미를 느껴보세요!
         </p>
         <p style={styles.note}>
-          (제작자들이{" "}
-          <span style={styles.note_span}>업무 시간 외에 취미로</span> 만든
-          프로젝트로 <br />
-          재밌게 귀엽게 봐주시길 바랍니다)
+          * 제작자들이{" "}
+          <span style={styles.note_span}>업무 시간 외에 취미로</span> <br />
+          만들었습니다! 귀엽게 봐주세요..🖤 * 
         </p>
         <button
           style={{
@@ -85,7 +84,7 @@ const styles = {
     fontFamily: "LeeSeoyun",
   },
   note: {
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     color: "#7d5a50",
     // fontStyle: "italic",
     marginBottom: "30px",
